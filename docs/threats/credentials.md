@@ -24,9 +24,20 @@ HTTPS.
 
 - **HTTPS enforced:** `normalize_site/1` strips any supplied scheme and
   `base_url/1` always re-applies `https://`; no code path can produce an
-  `http://` request. TLS certificate verification is Req/Finch/Mint default
-  (standard CA verification) unless the host explicitly weakens it via
-  `req_opts`.
+  `http://` request (the explicit `:base_url` escape hatch allows `http`
+  only for `localhost`/`127.0.0.1` test endpoints). TLS certificate
+  verification is Req/Finch/Mint default (standard CA verification) unless
+  the host explicitly weakens it via `req_opts`.
+- **Redacting `inspect/1` (T-001, mitigated):** a custom `Inspect`
+  implementation on the client struct shows at most the basic-auth email and
+  a 4-character token prefix; `api_token` / `access_token` never render —
+  not in IEx, crash reports, `Logger.debug("#{inspect(client)}")`, or
+  observer tools. Tests: `credential redaction (T-001)` in
+  `test/noizu/jira/client_test.exs`.
+- **Shape-only auth errors (T-002, mitigated):** `validate_auth!/1` describes
+  the offending value's shape ("3-element tuple") instead of interpolating
+  `inspect/1`, so real credentials riding inside a malformed tuple never
+  reach the raised message. Tests: `auth error redaction (T-002)`.
 - **No challenge/response divergence:** the header is built manually and
   sent up front, identically for both modes — no credential re-sending on
   redirects beyond Req's own behavior (Req does not replay Authorization
@@ -36,20 +47,17 @@ HTTPS.
 
 ## Findings
 
-- **T-001 (High, Information disclosure, Open):** the `Client` struct has no
-  `Inspect` implementation. `inspect(client)` — the default in IEx, crash
-  reports, `Logger.debug("... #{inspect(client)}")`, and observer tools —
-  prints `auth: {:basic, "you@example.com", "SUPERSECRET"}` verbatim
-  (verified). Any host that logs the struct leaks its Jira credential.
-  *Recommended mitigation:* implement `inspect/2` redacting the auth tuple
-  (e.g. `{:basic, "…", "**redacted**"}`).
-- **T-002 (Medium, Information disclosure, Open):** `validate_auth!/1`
-  raises `ArgumentError, "Noizu.Jira.Client invalid :auth #{inspect(other)}"`
-  for a malformed tuple. If the *shape* is wrong but real credential values
-  are inside (e.g. `{:basic, email, 123}`, or a mistyped mode carrying the
-  token), the raised message — which typically lands in logs — contains
-  them. *Recommended mitigation:* redact or elide `inspect/1` of the
-  offending value.
+- **T-001 (High, Information disclosure, Mitigated):** the `Client` struct
+  had no `Inspect` implementation, so `inspect(client)` printed the auth
+  tuple verbatim (verified). *Mitigation:* `defimpl Inspect` redacts the
+  token (email + 4-character prefix at most); regression tests assert
+  neither secret appears in `inspect/1` output in either auth mode.
+- **T-002 (Medium, Information disclosure, Mitigated):** `validate_auth!/1`
+  interpolated `inspect(other)` into the raised `ArgumentError`, so a
+  mistyped mode carrying a real token (e.g. `{:oaut, token}`) leaked it into
+  logs (verified). *Mitigation:* the message names the expected shapes and
+  reports only the offending value's shape; tests assert the secret is
+  absent from the message.
 - **Host-side residual risk (accepted):** hosts pass credentials via
   `System.fetch_env!` or their secret manager; storage, rotation, and
   bearer-token refresh are host responsibilities by design (contract §9).

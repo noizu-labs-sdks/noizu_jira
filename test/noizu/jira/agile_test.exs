@@ -20,6 +20,7 @@ defmodule Noizu.Jira.AgileTest do
   test "Boards.list prefixes the oauth ex/jira path" do
     name = stub_name()
     cid = cloud_id()
+    expected_path = "/ex/jira/" <> cid <> "/rest/agile/1.0/board"
     client = oauth_client(req: [plug: {Req.Test, name}])
 
     Req.Test.stub(name, fn conn ->
@@ -28,7 +29,7 @@ defmodule Noizu.Jira.AgileTest do
     end)
 
     assert {:ok, _} = Noizu.Jira.Agile.Boards.list(client)
-    assert_received {:path, "/ex/jira/" <> ^cid <> "/rest/agile/1.0/board"}
+    assert_received {:path, ^expected_path}
   end
 
   test "Boards.get/create/delete" do

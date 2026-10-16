@@ -45,8 +45,9 @@ lib/noizu/jira/
   query string itself (`URI.encode_query`) because Req's `:params` emits
   `key[]=` for lists, which Jira rejects; per-parameter styles are `:csv`
   (comma-joined) and `:multi` (repeated keys). Disables Req's own retries
-  (`retry: false`) and owns the 429/503 loop: `Retry-After` honored exactly,
-  otherwise exponential backoff with 0.7–1.3 jitter, injectable `:sleep` fun.
+  (`retry: false`) and owns the 429/503 loop: `Retry-After` clamped to
+  `[0, max_sleep_ms]`, otherwise exponential backoff with 0.7–1.3 jitter,
+  injectable `:sleep` fun.
   Path segments are escaped via `encode_segment/1` (`URI.encode(...,
   &URI.char_unreserved?/1)`). Decodes errors via the error module's decode
   function.

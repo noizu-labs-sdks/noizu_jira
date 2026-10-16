@@ -39,7 +39,8 @@ exactly one retry policy:
 
 - **Retried:** HTTP 429 and 503 only, up to `max_attempts` (default 3, total
   tries including the first).
-- **Sleep:** `Retry-After` header honored exactly when present (seconds → ms);
+- **Sleep:** `Retry-After` header honored when present (seconds → ms), clamped
+  to `[0, max_sleep_ms]` (negative → 0, huge → the cap, unparseable → backoff);
   otherwise exponential backoff from `base_sleep_ms` (250), doubling per
   attempt, capped at `max_sleep_ms` (30s), with 0.7–1.3 jitter.
 - **Injectable:** `retry: [sleep: fun]` on the client replaces

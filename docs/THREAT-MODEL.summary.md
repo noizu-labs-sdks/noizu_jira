@@ -7,11 +7,15 @@
   Atlassian over TLS (semi-trusted: controls bodies and `Retry-After`); Hex
   registry for supply chain.
 - **Register:** 12 findings — 1 High, 4 Medium, 6 Low, plus 2 mitigated
-  controls. Open: 6 · Partial: 2 · Mitigated: 2 · Accepted: 2.
-- **Top risks (open):** T-001 client struct inspect prints credentials
-  (verified); T-002 ArgumentError inspect leaks malformed auth tuples;
-  T-003 unvalidated `:site` host redirects credentials (userinfo trick);
-  T-010 Hex supply chain with lockfile-only defense (no CI yet).
+  controls. Open: 2 · Partial: 2 · Mitigated: 6 · Accepted: 2.
+- **Top risks (open):** T-006 multipart filename unsanitized (documented);
+  T-007 attachment download is memory-unbounded (documented). Partial:
+  T-004 `:cloud_id` UUID check owed; T-010 Hex supply chain (lockfile pins
+  + CI `mix hex.audit`).
+- **Recently mitigated (2026-10-17 hardening pass):** T-001 inspect
+  redaction; T-002 shape-only auth errors; T-003 `:site` grammar + https
+  `:base_url` escape hatch; T-005 `Retry-After` clamped to
+  `[0, max_sleep_ms]` — each with a regression test named for the finding.
 - **Verified controls:** https enforced (no downgrade), TLS verified,
   path/query percent-encoding, bounded single-owner retries, transport
   errors never retried, responses decoded as data only.
