@@ -47,8 +47,12 @@ defmodule Noizu.Jira.Pagination do
   The items key differs per endpoint (`values` on project/board listings,
   `comments`, `worklogs`, `issues` elsewhere), so `items_fun/1` extracts it.
   """
-  @spec offset_next(page(), (pos_integer() -> {:ok, page()} | {:error, Error.t()}), (page() ->
-                                                                                       [term()])) ::
+  @spec offset_next(
+          page(),
+          (pos_integer() -> {:ok, page()} | {:error, Error.t()}),
+          (page() ->
+             [term()])
+        ) ::
           next_result()
   # 〚🔧:𔌹𔆕𔘍𓙾〛 offset_next :: offset_next/3
   def offset_next(page, refetch, items_fun \\ &Map.get(&1, "values", [])) do

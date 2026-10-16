@@ -23,7 +23,9 @@ defmodule Noizu.Jira.Attachments do
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
   # 〚🔧:𓨉𓅸𓐉𔖲〛 add :: add/4
   def add(client, issue_id_or_key, path, opts \\ []) do
-    stream = File.stream!(path, 65_536)
+    # 64 KiB chunks via the third argument: the read-ahead-bytes second
+    # argument only exists on Elixir >= 1.16 (mix.exs allows ~> 1.15).
+    stream = File.stream!(path, [], 65_536)
     entry = if filename = opts[:filename], do: {stream, filename: filename}, else: stream
 
     Request.request(
