@@ -113,10 +113,76 @@ defmodule Noizu.Jira.RetryTest do
     client =
       Noizu.Jira.Client.new(
         auth: {:basic, "user@example.test", "fake-token"},
-        site: "127.0.0.1:1"
+        base_url: "http://127.0.0.1:1"
       )
 
     assert {:error, %Error{status: nil, reason: reason}} = Noizu.Jira.Issues.get(client, "PROJ-1")
     assert is_binary(reason) and reason != ""
+  end
+
+  test "negative Retry-After clamps to 0 instead of crashing Process.sleep (T-005)" do
+    name = stub_name()
+    counter = :counters.new(1, [:atomics])
+
+    Req.Test.stub(name, fn conn ->
+      :counters.add(counter, 1, 1)
+      conn |> Plug.Conn.put_resp_header("retry-after", "-1") |> respond(429, %{})
+    end)
+
+    # Default Process.sleep/1 path: a negative value used to raise FunctionClauseError.
+    client = counting_client(name, max_attempts: 2)
+
+    assert {:error, %Error{status: 429}} = Noizu.Jira.Issues.get(client, "PROJ-1")
+    assert :counters.get(counter, 1) == 2
+  end
+
+  test "huge Retry-After clamps to max_sleep_ms (T-005)" do
+    name = stub_name()
+    parent = self()
+
+    Req.Test.stub(name, fn conn ->
+      conn |> Plug.Conn.put_resp_header("retry-after", "999999999") |> respond(429, %{})
+    end)
+
+    client =
+      counting_client(name, max_attempts: 2, sleep: fn ms -> send(parent, {:slept, ms}) end)
+
+    assert {:error, %Error{status: 429}} = Noizu.Jira.Issues.get(client, "PROJ-1")
+    assert_received {:slept, 30_000}
+  end
+
+  test "huge Retry-After honors a custom max_sleep_ms cap (T-005)" do
+    name = stub_name()
+    parent = self()
+
+    Req.Test.stub(name, fn conn ->
+      conn |> Plug.Conn.put_resp_header("retry-after", "999999999") |> respond(429, %{})
+    end)
+
+    client =
+      counting_client(name,
+        max_attempts: 2,
+        max_sleep_ms: 500,
+        sleep: fn ms -> send(parent, {:slept, ms}) end
+      )
+
+    assert {:error, %Error{status: 429}} = Noizu.Jira.Issues.get(client, "PROJ-1")
+    assert_received {:slept, 500}
+  end
+
+  test "garbage Retry-After falls back to exponential backoff (T-005)" do
+    name = stub_name()
+    parent = self()
+
+    Req.Test.stub(name, fn conn ->
+      conn |> Plug.Conn.put_resp_header("retry-after", "soon") |> respond(429, %{})
+    end)
+
+    client =
+      counting_client(name, max_attempts: 2, sleep: fn ms -> send(parent, {:slept, ms}) end)
+
+    assert {:error, %Error{status: 429}} = Noizu.Jira.Issues.get(client, "PROJ-1")
+    assert_received {:slept, ms}
+    assert ms >= 175 and ms <= 325
   end
 end

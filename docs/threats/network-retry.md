@@ -11,26 +11,28 @@ contract §7.
   so there is exactly one retry owner (no amplification from stacked
   policies).
 - Bounded: `max_attempts: 3` total tries by default.
-- Sleep: `Retry-After` (seconds) honored **exactly when present**;
+- Sleep: `Retry-After` (seconds) honored **when present, clamped to
+  `[0, max_sleep_ms]`** (negative → 0, huge → the cap, unparseable → backoff);
   otherwise exponential backoff from 250 ms, doubling, **capped at 30 s**,
   with 0.7–1.3 jitter. The `sleep` fun is injectable.
 
 ## Findings
 
-- **T-005 (Low, Denial of service, Open):** the `Retry-After` path has **no
-  clamp**:
-  - A **negative** value (`Retry-After: -1`) parses to a negative integer and
-    reaches `Process.sleep/1`, which raises `FunctionClauseError` (verified) —
-    crashing the calling process rather than returning an error.
-  - A **huge** value (`Retry-After: 999999999`) hangs the calling process for
-    the full duration; the 30 s `max_sleep_ms` cap applies only to the
-    backoff path, not here.
+- **T-005 (Low, Denial of service, Mitigated):** the `Retry-After` path had
+  **no clamp**: a **negative** value (`Retry-After: -1`) reached
+  `Process.sleep/1` and raised `FunctionClauseError`, crashing the calling
+  process (verified), and a **huge** value (`Retry-After: 999999999`) hung
+  it for the full duration — the 30 s `max_sleep_ms` cap applied only to
+  the backoff path, not here.
   Exploitation requires a hostile or broken responder in the TLS path
   (Atlassian itself, a corporate TLS-inspecting proxy, or a `plug:` test
   stub); a network MITM cannot forge responses without breaking certificate
-  verification. *Recommended mitigation:* clamp the parsed value to
-  `[0, max_sleep_ms]` (or a dedicated `:max_retry_after_ms`), treating
-  non-positive as "use backoff".
+  verification. *Mitigation:* the parsed value is clamped to
+  `[0, max_sleep_ms]` — negative → 0, oversized → the cap (the cap follows
+  the caller's `:max_sleep_ms` override). Tests: the `(T-005)` entries in
+  `test/noizu/jira/retry_test.exs` (negative clamps to 0 via the default
+  `Process.sleep/1` path, huge clamps to the default and a custom cap,
+  garbage falls back to exponential backoff).
 - **Quota self-DoS (mitigated by design):** retries are bounded at 3 total
   tries and sleep between them, so the library cannot amplify load against
   Atlassian burst limits beyond 3× per call; exhausted retries surface the

@@ -30,7 +30,9 @@ Rules:
 
 - Tokens are created at `https://id.atlassian.com/manage/api-tokens`. Jira sends no auth challenge — the header is always sent up front.
 - The header is built manually (`Authorization:`), not via the HTTP client's `:auth` option, so both modes behave identically and are trivially testable.
-- For `:basic`, `:site` is required; `https://` and any trailing `/` on a supplied site string are stripped and the scheme is re-applied as `https://` — non-HTTPS is never used.
+- For `:basic`, `:site` is required (unless `:base_url` is given): it accepts a bare subdomain (`"acme"`, completed to `acme.atlassian.net`) or a full `<sub>.atlassian.net` host (case-insensitive); a leading `https://` and trailing `/` are stripped and the scheme is re-applied as `https://` — non-HTTPS is never used. Userinfo (`@`), ports, paths, query strings, and foreign hosts are rejected with `ArgumentError` (a hostile `:site` would receive the `Authorization` header).
+- `:base_url` is the explicit escape hatch for proxies and tests: an absolute `https` URL (`http` only for `localhost`/`127.0.0.1`), no userinfo, path, query, or fragment. `Req.Test` stubs work through it unchanged.
+- `inspect/1` of a client never renders credentials — the `Inspect` implementation shows at most the basic email and a 4-character token prefix (T-001).
 - For `:oauth`, `:cloud_id` is required (obtained from `GET https://api.atlassian.com/oauth/token/accessible-resources` — token exchange itself is out of scope, see §9).
 - Atlassian's own guidance: Basic auth is appropriate for scripts/tools; user-facing apps should prefer OAuth 2.0 3LO. Both are supported equally here; the choice is the caller's.
 
@@ -223,7 +225,7 @@ Jira error payloads use the *error collection* shape: `{errorMessages: [string],
 Jira Cloud enforces hourly point quotas, burst limits, and per-issue write limits; violations return **HTTP 429 (sometimes 503) with `Retry-After` (seconds)**, plus informational `X-RateLimit-*` headers. The library's policy:
 
 - Retries **429 and 503** responses, bounded by `retry: [max_attempts: 3]` (total tries including the first).
-- Sleep: `Retry-After` seconds honored **exactly when present** (it is documented as a minimum); otherwise exponential backoff from `base_sleep_ms: 250`, doubling per attempt, capped at `max_sleep_ms: 30_000`, with 0.7–1.3 jitter.
+- Sleep: `Retry-After` seconds honored when present (it is documented as a minimum), **clamped to `[0, max_sleep_ms]`** — negative values clamp to 0 (never passed to `Process.sleep/1`, which raises on negatives), oversized values clamp to the cap, and unparseable values fall back to backoff; otherwise exponential backoff from `base_sleep_ms: 250`, doubling per attempt, capped at `max_sleep_ms: 30_000`, with 0.7–1.3 jitter.
 - Attempts exhausted → the final 429/503 is returned as a normal `{:error, %Error{}}`.
 - The HTTP client's own retry machinery is disabled (`retry: false` on Req) so exactly one policy owns retries.
 - `retry: [sleep: fun]` is injectable (used by tests; usable for telemetry or `Process.sleep` alternatives).
@@ -256,7 +258,7 @@ Attachment upload is `multipart/form-data` streamed from disk (constant memory),
 | Pagination | `{:ok, page}` per call + `*_stream` lazy helpers; both models; defensive termination | Docs state `total`/`isLast` are absent on some operations; empty pages are legal |
 | Stream errors | Raise `%Noizu.Jira.Error{}` | Streams have no error channel; hiding failures would corrupt fold results |
 | Errors | `%Noizu.Jira.Error{}` exception struct with `messages` + `field_errors` | Mirrors the documented error-collection shape one-to-one |
-| Retries | Library-owned, 429/503 only, `Retry-After` exact, bounded attempts, injectable sleep | Follows Atlassian's published retry guidance; single policy owner |
+| Retries | Library-owned, 429/503 only, `Retry-After` clamped to `[0, max_sleep_ms]`, bounded attempts, injectable sleep | Follows Atlassian's published retry guidance; single policy owner |
 | HTTP client | Req, `retry: false`, manual headers | Deterministic behavior; avoids double-retry; trivially stubbed via `Req.Test` |
 | ADF | Tiny `ADF.doc/1` text converter + pass-through maps | Full ADF AST is out of scope; common case (plain text) covered |
 | Fields endpoint | No stream | Atlassian is mid-migration between array and paginated-map shapes |

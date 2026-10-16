@@ -49,16 +49,16 @@ graph LR
 
 | ID | Severity | STRIDE | Component | Status |
 |----|----------|--------|-----------|--------|
-| T-001 | High | Information disclosure | `inspect/1` of `Client` prints credentials (verified) | **Open** |
-| T-002 | Medium | Information disclosure | `ArgumentError` interpolates `inspect/1` of malformed auth tuple | **Open** |
-| T-003 | Medium | Information disclosure / Spoofing | `:site` accepts any host (`@` userinfo trick included) → credentials forwarded to attacker host | **Open** |
+| T-001 | High | Information disclosure | `inspect/1` of `Client` prints credentials (verified) | **Mitigated** (redacting `Inspect` impl — tests `credential redaction (T-001)`) |
+| T-002 | Medium | Information disclosure | `ArgumentError` interpolates `inspect/1` of malformed auth tuple | **Mitigated** (shape-only message — tests `auth error redaction (T-002)`) |
+| T-003 | Medium | Information disclosure / Spoofing | `:site` accepts any host (`@` userinfo trick included) → credentials forwarded to attacker host | **Mitigated** (site grammar + `:base_url` escape hatch — tests `site validation (T-003)`) |
 | T-004 | Low | Tampering | `:cloud_id` unvalidated in URL string (host fixed, path/query confusion only) | Partial |
-| T-005 | Low | Denial of service | `Retry-After` unclamped: negative crashes caller, huge hangs it (verified) | **Open** |
+| T-005 | Low | Denial of service | `Retry-After` unclamped: negative crashes caller, huge hangs it (verified) | **Mitigated** (clamped to `[0, max_sleep_ms]` — tests `(T-005)` in `retry_test.exs`) |
 | T-006 | Low | Tampering | Multipart filename unsanitized in `Content-Disposition` | Open (documented) |
 | T-007 | Low | Denial of service | `Attachments.content/3` loads whole attachment into memory | Open (documented) |
 | T-008 | Low | Information disclosure | JQL logic injection (bounded by token's own permissions; API has no parameterization) | Accepted |
 | T-009 | Low | Information disclosure | `%Error{}` retains full response body (host must redact before logging) | Accepted |
-| T-010 | Medium | Supply chain | Hex dependency compromise; lockfile-only defense, no CI audits yet | Partial |
+| T-010 | Medium | Supply chain | Hex dependency compromise; lockfile pins + CI `mix hex.audit` | Partial |
 | T-011 | High | Spoofing / Information disclosure | TLS interception, downgrade, credential replay | **Mitigated** (https enforced, TLS verified, no cross-host replay) |
 | T-012 | Medium | Tampering | Path traversal via ids/keys in URL paths | **Mitigated** (`encode_segment/1`) |
 
@@ -66,7 +66,7 @@ graph LR
 
 ## Mitigation Coverage
 
-**2 mitigated · 2 partial · 6 open · 2 accepted.**
+**6 mitigated · 2 partial · 2 open · 2 accepted.**
 
 Already in place (controls, mapped to IDs):
 
@@ -78,20 +78,33 @@ Already in place (controls, mapped to IDs):
   strings built in-house and percent-encoded (parameter-splitting control).
 - Single bounded retry owner; transport errors never retried (T-005
   amplification leg).
+- `Retry-After` clamped to `[0, max_sleep_ms]` — negatives cannot crash
+  `Process.sleep/1`, huge values cannot hang the caller (T-005).
+- Redacting `Inspect` implementation on the client struct: api_token /
+  access_token never render, at most the email and a 4-character prefix
+  (T-001); auth-validation errors describe the value's shape instead of
+  interpolating it (T-002).
+- `:site` grammar enforced — bare subdomain or `<sub>.atlassian.net` host;
+  userinfo (`@`), ports, paths, queries, and foreign hosts rejected — with
+  one explicit https-only `:base_url` escape hatch (localhost/127.0.0.1 may
+  use http) for proxies and tests (T-003).
+- CI (GitHub Actions, push/PR on develop/stage/main): format check,
+  `compile --warnings-as-errors`, tests, and `mix hex.audit` on an
+  Elixir 1.15/OTP 25 + 1.18/OTP 27 matrix (T-010 audit leg).
 - No logging, no persistence, no eval of server data; responses stay plain
   maps (T-009 severity, general).
 - Lockfile-pinned minimal dependency tree (T-010).
 
-Open items need code (T-001, T-002, T-003, T-005) or documentation
-(T-006, T-007); T-004 and T-010 want cheap hardening (UUID check; CI audits).
+Remaining: T-006 and T-007 want documentation; T-004 wants a cheap
+UUID-format check on `cloud_id`.
 
 ## Residual Risk
 
 - **Host-side credential handling** — storage, rotation, OAuth refresh, and
-  *not logging the client struct* are host responsibilities by design
-  (contract §9). The library cannot make `inspect` safe for a struct it
-  doesn't control... it can: T-001 is the fix; until then this is the top
-  open risk.
+  *not logging other credential-bearing values* are host responsibilities by
+  design (contract §9). The library-side leak surfaces are closed:
+  `inspect/1` of the client struct is redacted (T-001) and auth-validation
+  errors never carry values (T-002).
 - **JQL expressiveness** (T-008) accepted: no parameterized alternative
   exists; blast radius equals the credential's permission scope.
 - **Hostile Atlassian responses** — bounded by Jason-decode-only handling
@@ -106,4 +119,5 @@ Findings verified against the code, not assumed: T-001/T-005 behaviors were
 reproduced on the VM; every claim about controls traces to
 `lib/noizu/jira/{client,request,pagination,error,attachments,search}.ex`.
 No git history yet (pre-initial-commit) — this model reflects the working
-tree as of 2026-10-17.
+tree as of 2026-10-17, updated after the security-hardening pass
+(T-001/T-002/T-003/T-005 fixed with regression tests; CI added).

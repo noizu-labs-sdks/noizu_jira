@@ -7,6 +7,14 @@ defmodule Noizu.Jira.Search do
   Responses are `{issues, isLast, nextPageToken?}`; `stream/3` walks
   `nextPageToken` lazily.
 
+  > #### JQL injection — accepted risk (T-008) {: .warning}
+  >
+  > JQL is sent to the API verbatim: the search API has no parameterized
+  > form. **Never interpolate untrusted input into `jql`** — a hostile value
+  > can alter the query's logic (extra clauses, `OR` escapes) within the
+  > credential's permission scope. Build queries from trusted templates and
+  > escape user-controlled string literals yourself before passing them here.
+
   """
 
   alias Noizu.Jira.{Pagination, Request}
@@ -18,6 +26,9 @@ defmodule Noizu.Jira.Search do
 
   Options map to body fields: `:max_results`, `:next_page_token`, `:fields`
   (list of field ids), `:fields_by_keys`, `:properties`, `:validate_query`.
+
+  Do not interpolate untrusted input into `jql` — see the module warning on
+  JQL injection (T-008).
 
       {:ok, page} =
         Noizu.Jira.Search.search(client, "project = PROJ ORDER BY created DESC",
