@@ -6,7 +6,7 @@
   basic/oauth, `site`/`cloud_id`, `req_opts` → Req, retry overrides) passed
   explicitly to every call.
 - **Request path:** resource module → (ADF wrap / Pagination stream) →
-  `Noizu.Jira.Request` (URL + in-house query encoding, manual
+  Noizu.Jira.Request (URL + in-house query encoding, manual
   `Authorization` header, Req with `retry: false`) → bounded 429/503 loop
   honoring `Retry-After` → decoded map or `%Noizu.Jira.Error{}`.
 - **Responses:** decoded JSON maps, never structs; errors mirror Jira's

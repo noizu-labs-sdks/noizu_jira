@@ -1,8 +1,8 @@
+# 〚🔧:𓞮𓬥𓊭𔕑〛 Noizu.Jira.Transitions :: Issue workflow transitions (platform v3).
 defmodule Noizu.Jira.Transitions do
   @moduledoc """
   Issue workflow transitions (platform v3).
 
-  〚📦:𓞮𓬥𓊭𔕑〛 Noizu.Jira.Transitions :: Issue workflow transitions (platform v3).
   """
 
   alias Noizu.Jira.Request
@@ -10,11 +10,7 @@ defmodule Noizu.Jira.Transitions do
   @doc "Lists the transitions available to the current user on an issue."
   @spec list(Noizu.Jira.Client.t(), String.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `opts`
-
-  〚🔧:𓴣𔈩𓽝𓫛〛 list :: list/3
-  """
+  # 〚🔧:𓴣𔈩𓽝𓫛〛 list :: list/3
   def list(client, issue_id_or_key, opts \\ []) do
     params = Request.params([expand: :expand], opts)
 
@@ -37,11 +33,7 @@ defmodule Noizu.Jira.Transitions do
   """
   @spec perform(Noizu.Jira.Client.t(), String.t(), String.t(), keyword()) ::
           {:ok, term()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `transition_id`, `opts`
-
-  〚🔧:𓎡𔀑𓔇𓇼〛 perform :: perform/4
-  """
+  # 〚🔧:𓎡𔀑𓔇𓇼〛 perform :: perform/4
   def perform(client, issue_id_or_key, transition_id, opts \\ []) do
     body =
       %{"transition" => %{"id" => to_string(transition_id)}}

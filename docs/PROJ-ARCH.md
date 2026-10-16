@@ -48,9 +48,9 @@ graph LR
 | Component | Purpose |
 |-----------|---------|
 | `Noizu.Jira.Client` | Immutable config: auth tuple, site/cloud_id, `req_opts` (forwarded to Req), retry overrides |
-| `Noizu.Jira.Request` | Only place HTTP happens: URL/query/header assembly, auth header, 429/503 retry loop, error decode |
+| Noizu.Jira.Request | Only place HTTP happens: URL/query/header assembly, auth header, 429/503 retry loop, error decode |
 | 14 resource modules | One per endpoint family; `(client, ...args, opts)` → `{:ok, body} \| {:error, error}` |
-| `Noizu.Jira.Pagination` | Shared `Stream.resource` walker with offset / nextPageToken / array termination strategies |
+| Noizu.Jira.Pagination | Shared `Stream.resource` walker with offset / nextPageToken / array termination strategies |
 | `Noizu.Jira.Error` | Exception mirroring Jira's error-collection payload; `reason` for transport failures |
 | `Noizu.Jira.ADF` | Plain text → minimal Atlassian Document Format; pass-through for ADF maps |
 

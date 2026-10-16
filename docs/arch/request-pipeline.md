@@ -1,7 +1,7 @@
 # noizu_jira — Request Pipeline
 
 The lifecycle of a single API call, from `Noizu.Jira.Issues.get(client, "PROJ-123")`
-to the returned tuple. All of this lives in `Noizu.Jira.Request` and
+to the returned tuple. All of this lives in Noizu.Jira.Request and
 `Noizu.Jira.Client` (`@doc false` internals; behavior contract:
 `docs/API-CONTRACT.md` §1, §5a–§7).
 

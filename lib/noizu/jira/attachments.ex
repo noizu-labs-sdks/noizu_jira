@@ -1,10 +1,10 @@
+# 〚🔧:𓢒𓥿𔑌𓳷〛 Noizu.Jira.Attachments :: Issue attachments (platform v3).
 defmodule Noizu.Jira.Attachments do
   @moduledoc """
   Issue attachments (platform v3). Uploads are multipart/form-data streamed from
   disk and carry the mandatory `X-Atlassian-Token: no-check` CSRF-exemption
   header. Content downloads return raw binaries.
 
-  〚📦:𓢒𓥿𔑌𓳷〛 Noizu.Jira.Attachments :: Issue attachments (platform v3).
   """
 
   alias Noizu.Jira.Request
@@ -21,11 +21,7 @@ defmodule Noizu.Jira.Attachments do
   """
   @spec add(Noizu.Jira.Client.t(), String.t(), Path.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `path`, `opts`
-
-  〚🔧:𓨉𓅸𓐉𔖲〛 add :: add/4
-  """
+  # 〚🔧:𓨉𓅸𓐉𔖲〛 add :: add/4
   def add(client, issue_id_or_key, path, opts \\ []) do
     stream = File.stream!(path, 65_536)
     entry = if filename = opts[:filename], do: {stream, filename: filename}, else: stream
@@ -42,9 +38,9 @@ defmodule Noizu.Jira.Attachments do
   @doc """
   Fetches attachment metadata.
 
-  〚🔧:𔈗𓲫𔘝𓻒〛 get :: Fetches attachment metadata.
   """
   @spec get(Noizu.Jira.Client.t(), String.t()) :: {:ok, map()} | {:error, Noizu.Jira.Error.t()}
+  # 〚🔧:𔈗𓲫𔘝𓻒〛 get :: Fetches attachment metadata.
   def get(client, attachment_id) do
     Request.request(
       client,
@@ -56,11 +52,7 @@ defmodule Noizu.Jira.Attachments do
   @doc "Downloads attachment content as a binary."
   @spec content(Noizu.Jira.Client.t(), String.t()) ::
           {:ok, binary()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `attachment_id`
-
-  〚🔧:𔀠𓼽𔉳𓭉〛 content :: content/2
-  """
+  # 〚🔧:𔀠𓼽𔉳𓭉〛 content :: content/2
   def content(client, attachment_id) do
     Request.request(
       client,
@@ -73,11 +65,7 @@ defmodule Noizu.Jira.Attachments do
   @doc "Deletes an attachment."
   @spec delete(Noizu.Jira.Client.t(), String.t()) ::
           {:ok, term()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `attachment_id`
-
-  〚🔧:𓇔𓢬𓌂𓨃〛 delete :: delete/2
-  """
+  # 〚🔧:𓇔𓢬𓌂𓨃〛 delete :: delete/2
   def delete(client, attachment_id) do
     Request.request(
       client,
