@@ -10,6 +10,7 @@ Security-hardening pass (threat model: `docs/THREAT-MODEL.md`).
 - `Retry-After` is clamped to `[0, max_sleep_ms]`: a negative value no longer crashes `Process.sleep/1`, a huge value no longer hangs the caller (the cap follows the `:max_sleep_ms` override), and unparseable values fall back to exponential backoff (T-005).
 - `Noizu.Jira.Search` moduledoc now warns that JQL is sent verbatim (no parameterized API form) and callers must not interpolate untrusted input (T-008, accepted risk, documented).
 - CI: GitHub Actions workflow (push/PR on `develop`/`stage`/`main`) with an Elixir 1.15/OTP 25 + 1.18/OTP 27 matrix — `mix format --check-formatted`, `mix compile --warnings-as-errors`, `mix test`, `mix hex.audit`, deps/`_build` cached (T-010 audit leg).
+- Attachment upload streams via `File.stream!/3`'s chunk-size third argument, restoring compatibility with Elixir 1.15 (the read-ahead-bytes second argument requires >= 1.16); tests normalized so patterns avoid pin-inside-`<>` concatenation, which older Elixir rejects at compile time.
 - Threat model updated: T-001/T-002/T-003/T-005 moved to Mitigated with regression-test evidence; docs (README, API-CONTRACT, layout/arch notes) aligned with the new `:site` grammar and retry clamp.
 
 ## 0.1.0 — 2026-10-17

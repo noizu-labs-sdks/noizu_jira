@@ -82,6 +82,7 @@ defmodule Noizu.Jira.ClientTest do
     test "oauth: host, path prefix, and Bearer header" do
       name = stub_name()
       cid = cloud_id()
+      expected_path = "/ex/jira/" <> cid <> "/rest/api/3/issue/PROJ-1"
       client = oauth_client(req: [plug: {Req.Test, name}])
 
       Req.Test.stub(name, fn conn ->
@@ -94,8 +95,7 @@ defmodule Noizu.Jira.ClientTest do
 
       assert {:ok, %{"key" => "PROJ-1"}} = Noizu.Jira.Issues.get(client, "PROJ-1")
 
-      assert_received {:conn, "GET", "/ex/jira/" <> ^cid <> "/rest/api/3/issue/PROJ-1", headers,
-                       "api.atlassian.com"}
+      assert_received {:conn, "GET", ^expected_path, headers, "api.atlassian.com"}
 
       assert {"authorization", "Bearer fake-access-token"} =
                List.keyfind(headers, "authorization", 0)
