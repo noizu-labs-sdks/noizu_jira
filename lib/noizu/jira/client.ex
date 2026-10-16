@@ -1,3 +1,4 @@
+# 〚🔧:𓴶𔙬𓽸𓏝〛 Noizu.Jira.Client :: Immutable client configuration, passed explicitly to every call.
 defmodule Noizu.Jira.Client do
   @moduledoc """
   Immutable client configuration, passed explicitly to every call.
@@ -23,7 +24,6 @@ defmodule Noizu.Jira.Client do
   The client is a plain struct with no global state; reuse it across calls and
   processes.
 
-  〚📦:𓴶𔙬𓽸𓏝〛 Noizu.Jira.Client :: Immutable client configuration, passed explicitly to every call.
   """
 
   defstruct [:auth, :site, :cloud_id, :req_opts, :retry]
@@ -46,9 +46,9 @@ defmodule Noizu.Jira.Client do
   @doc """
   Builds a client. Raises `KeyError` without `:auth` and `ArgumentError` on a mode/option mismatch.
 
-  〚🔧:𓟱𓖇𔇁𓹕〛 new :: Builds a client.
   """
   @spec new(keyword()) :: t()
+  # 〚🔧:𓟱𓖇𔇁𓹕〛 new :: Builds a client.
   def new(opts) when is_list(opts) do
     auth = Keyword.fetch!(opts, :auth)
     validate_auth!(auth)

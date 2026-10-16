@@ -1,7 +1,7 @@
 # noizu_jira — Streaming and Pagination
 
 How `*_stream` functions walk multi-page listings. Machinery lives in
-`Noizu.Jira.Pagination` (`@moduledoc false`); semantics are contractual —
+Noizu.Jira.Pagination (`@moduledoc false`); semantics are contractual —
 `docs/API-CONTRACT.md` §5.
 
 ## Why it exists
