@@ -23,7 +23,9 @@ end
 
 ## Quickstart
 
-Basic auth against `https://<site>.atlassian.net`:
+Basic auth against `https://<site>.atlassian.net` (`:site` takes a bare
+subdomain — `"acme"` — or the full host; userinfo, ports, paths, and
+non-Atlassian hosts are rejected; proxies/tests pass `:base_url` explicitly):
 
 ```elixir
 client =
@@ -34,6 +36,9 @@ client =
 
 {:ok, issue} = Noizu.Jira.Issues.get(client, "PROJ-123", fields: ["summary", "status"])
 ```
+
+The client struct redacts credentials in `inspect/1` output (at most the
+email and a 4-character token prefix), so logging it does not leak tokens.
 
 OAuth 2.0 3LO (pass the access token and the cloud id from
 `https://api.atlassian.com/oauth/token/accessible-resources`):
@@ -84,7 +89,7 @@ case Noizu.Jira.Issues.get(client, "NOPE-1") do
 end
 ```
 
-429/503 responses are retried automatically (bounded, honoring `Retry-After`); tune with `retry: [max_attempts: 5, base_sleep_ms: 500]` on `Client.new/1`. Transport failures and non-retryable statuses return `{:error, error}` immediately.
+429/503 responses are retried automatically (bounded, honoring `Retry-After`, clamped to 0–30s); tune with `retry: [max_attempts: 5, base_sleep_ms: 500]` on `Client.new/1`. Transport failures and non-retryable statuses return `{:error, error}` immediately.
 
 ## Status
 

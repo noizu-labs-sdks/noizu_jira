@@ -109,4 +109,96 @@ defmodule Noizu.Jira.ClientTest do
       assert {:ok, _} = Noizu.Jira.Issues.get(client, "PROJ/1")
     end
   end
+
+  describe "credential redaction (T-001)" do
+    test "inspect/1 never contains the basic api_token" do
+      rendered = inspect(basic_client())
+
+      refute rendered =~ "fake-token"
+      assert rendered =~ "user@example.test"
+    end
+
+    test "inspect/1 never contains the oauth access_token" do
+      rendered = inspect(oauth_client())
+
+      refute rendered =~ "fake-access-token"
+      assert rendered =~ "oauth"
+    end
+  end
+
+  describe "auth error redaction (T-002)" do
+    test "invalid auth message never contains the credential value" do
+      error =
+        assert_raise ArgumentError, fn ->
+          Client.new(auth: {:oaut, "super-secret-oauth-token"})
+        end
+
+      refute error.message =~ "super-secret-oauth-token"
+      assert error.message =~ "invalid :auth"
+    end
+
+    test "wrong-shape basic auth message describes the shape, not the values" do
+      error =
+        assert_raise ArgumentError, fn ->
+          Client.new(auth: {:basic, "user@example.test", 12_345}, site: "acme")
+        end
+
+      refute error.message =~ "user@example.test"
+      refute error.message =~ "12345"
+      assert error.message =~ "3-element tuple"
+    end
+  end
+
+  describe "site validation (T-003)" do
+    test "accepts a bare subdomain and completes it to <sub>.atlassian.net" do
+      client = Client.new(auth: {:basic, "a@b.test", "t"}, site: "acme")
+      assert client.site == "acme.atlassian.net"
+      assert Client.base_url(client) == "https://acme.atlassian.net"
+    end
+
+    test "accepts a full <sub>.atlassian.net host, case-insensitively" do
+      client = Client.new(auth: {:basic, "a@b.test", "t"}, site: "ACME.Atlassian.NET")
+      assert client.site == "acme.atlassian.net"
+      assert Client.base_url(client) == "https://acme.atlassian.net"
+    end
+
+    test "rejects userinfo, foreign hosts, ports, and paths" do
+      for bad <- [
+            "x.atlassian.net@evil.com",
+            "evil.com",
+            "acme.atlassian.net:444",
+            "acme.atlassian.net/x",
+            "acme.atlassian.net?x=1",
+            "acme.atlassian.net.evil.com",
+            ""
+          ] do
+        assert_raise ArgumentError, ~r/invalid :site/, fn ->
+          Client.new(auth: {:basic, "a@b.test", "t"}, site: bad)
+        end
+      end
+    end
+
+    test ":base_url escape hatch is honored and must be https off localhost" do
+      client = Client.new(auth: {:basic, "a@b.test", "t"}, base_url: "https://jira.internal:8443")
+      assert Client.base_url(client) == "https://jira.internal:8443"
+
+      assert_raise ArgumentError, ~r/invalid :base_url/, fn ->
+        Client.new(auth: {:basic, "a@b.test", "t"}, base_url: "http://jira.internal")
+      end
+    end
+
+    test ":base_url allows http for localhost endpoints and works with Req.Test stubs" do
+      name = stub_name()
+
+      client =
+        Client.new(
+          auth: {:basic, "a@b.test", "t"},
+          base_url: "http://127.0.0.1:4040",
+          req_opts: [plug: {Req.Test, name}]
+        )
+
+      stub(name, :get, "/rest/api/3/issue/PROJ-1", %{"key" => "PROJ-1"})
+      assert {:ok, %{"key" => "PROJ-1"}} = Noizu.Jira.Issues.get(client, "PROJ-1")
+    end
+  end
 end

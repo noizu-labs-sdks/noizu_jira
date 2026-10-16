@@ -135,7 +135,14 @@ defmodule Noizu.Jira.Request do
     end
   end
 
-  defp sleep_ms(retry_after, _retry, _attempt) when is_integer(retry_after), do: retry_after
+  # T-005: Retry-After is attacker-influenced (hostile/broken responder in
+  # the TLS path). Clamp to [0, max_sleep_ms]: negative values must never
+  # reach Process.sleep/1 (it raises on negatives), and huge values must not
+  # hang the caller for longer than the configured cap.
+  defp sleep_ms(retry_after, retry, _attempt) when is_integer(retry_after) do
+    cap = Keyword.get(retry, :max_sleep_ms, 30_000)
+    retry_after |> max(0) |> min(cap)
+  end
 
   defp sleep_ms(nil, retry, attempt) do
     base = Keyword.get(retry, :base_sleep_ms, 250)
