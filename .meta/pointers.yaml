@@ -6,60 +6,60 @@ pointers:
     file_path: lib/noizu/jira/comments.ex
     function: stream
     kind: function
-    line: 37
+    line: 35
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 37
+        line: 35
     token: 𔗢𔈇𓞧𓭖
-    updated_at: 2026-10-16T21:56:50.913389Z
+    updated_at: 2026-10-16T22:04:19.623468Z
   441ec7a0-0ed7-549c-a98e-a7dddf9c4d72:
     created_at: 2026-10-16T21:56:50.913333Z
     description: Fetches attachment metadata.
     file_path: lib/noizu/jira/attachments.ex
     function: get
     kind: function
-    line: 45
+    line: 43
     locations:
       - file_path: lib/noizu/jira/attachments.ex
-        line: 45
+        line: 43
     token: 𔈗𓲫𔘝𓻒
-    updated_at: 2026-10-16T21:56:50.913333Z
+    updated_at: 2026-10-16T22:04:19.623421Z
   8263e5f2-85e4-52b2-98fc-c991f349b37b:
     created_at: 2026-10-16T21:56:50.913258Z
     description: list/3
     file_path: lib/noizu/jira/transitions.ex
     function: list
     kind: function
-    line: 16
+    line: 13
     locations:
       - file_path: lib/noizu/jira/transitions.ex
-        line: 16
+        line: 13
     token: 𓴣𔈩𓽝𓫛
-    updated_at: 2026-10-16T21:56:50.913258Z
+    updated_at: 2026-10-16T22:04:19.623353Z
   7f21bb9b-f83d-5524-980e-41c6e9901337:
     created_at: 2026-10-16T21:56:50.913186Z
     description: Lazily streams projects.
     file_path: lib/noizu/jira/projects.ex
     function: stream
     kind: function
-    line: 39
+    line: 41
     locations:
       - file_path: lib/noizu/jira/projects.ex
-        line: 39
+        line: 41
     token: 𓣜𓄘𓗧𔌷
-    updated_at: 2026-10-16T21:56:50.913186Z
+    updated_at: 2026-10-16T22:04:19.623274Z
   824ccb9e-0228-560d-9de3-73963dbb71a7:
     created_at: 2026-10-16T21:56:50.913040Z
     description: bulk_create/3
     file_path: lib/noizu/jira/issues.ex
     function: bulk_create
     kind: function
-    line: 122
+    line: 103
     locations:
       - file_path: lib/noizu/jira/issues.ex
-        line: 122
+        line: 103
     token: 𓊢𔃻𔈚𔙗
-    updated_at: 2026-10-16T21:56:50.913040Z
+    updated_at: 2026-10-16T22:04:19.623187Z
   b1e04cd7-1007-51b9-8695-4a62bc904ea1:
     created_at: 2026-10-16T21:56:50.913205Z
     description: decode/2
@@ -78,72 +78,72 @@ pointers:
     file_path: lib/noizu/jira/issues.ex
     function: delete
     kind: function
-    line: 99
+    line: 84
     locations:
       - file_path: lib/noizu/jira/issues.ex
-        line: 99
+        line: 84
     token: 𔈇𔖻𓠖𔔩
-    updated_at: 2026-10-16T21:56:50.913326Z
+    updated_at: 2026-10-16T22:04:19.623414Z
   8953c216-e094-5366-8324-c4d3fddba37e:
     created_at: 2026-10-16T21:56:50.913078Z
     description: Issue CRUD against the platform v3 API.
     file_path: lib/noizu/jira/issues.ex
     function: Noizu.Jira.Issues
-    kind: module
-    line: 9
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/issues.ex
-        line: 9
+        line: 1
     token: 𓏯𔐐𓲭𔃞
-    updated_at: 2026-10-16T21:56:50.913078Z
+    updated_at: 2026-10-16T22:04:19.623212Z
   7e9e937a-f85d-5bd5-870d-5688676c5d5c:
     created_at: 2026-10-16T21:56:50.913344Z
     description: Lazily streams issues across all pages, following `nextPageToken`.
     file_path: lib/noizu/jira/search.ex
     function: stream
     kind: function
-    line: 54
+    line: 52
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 54
+        line: 52
     token: 𔉫𓈢𓔒𓺌
-    updated_at: 2026-10-16T21:56:50.913344Z
+    updated_at: 2026-10-16T22:04:19.623432Z
   16af8216-2658-565c-a75d-0b6550ace363:
     created_at: 2026-10-16T21:56:50.913364Z
     description: issues/3
     file_path: lib/noizu/jira/agile/sprints.ex
     function: issues
     kind: function
-    line: 61
+    line: 50
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 61
+        line: 50
     token: 𔑚𓩱𓖞𔁓
-    updated_at: 2026-10-16T21:56:50.913364Z
+    updated_at: 2026-10-16T22:04:19.623446Z
   f69d1a1a-d133-5f5b-8910-bc234e6acede:
     created_at: 2026-10-16T21:56:50.913371Z
     description: issues/3
     file_path: lib/noizu/jira/agile/boards.ex
     function: issues
     kind: function
-    line: 94
+    line: 87
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 94
+        line: 87
     token: 𔓢𓯠𓃅𓲾
-    updated_at: 2026-10-16T21:56:50.913371Z
+    updated_at: 2026-10-16T22:04:19.623453Z
   4d4077b5-7a6d-5220-95a2-20d5c633f900:
     created_at: 2026-10-16T21:56:50.913021Z
     description: Issue worklogs (platform v3, offset pagination).
     file_path: lib/noizu/jira/worklogs.ex
     function: Noizu.Jira.Worklogs
-    kind: module
-    line: 6
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/worklogs.ex
-        line: 6
+        line: 1
     token: 𓈣𓔘𓬓𓷀
-    updated_at: 2026-10-16T21:56:50.913021Z
+    updated_at: 2026-10-16T22:04:19.623175Z
   768d02e1-ea84-575c-9873-3105d8ac09ae:
     created_at: 2026-10-16T21:56:50.913179Z
     description: Noizu.Jira.Request module
@@ -162,120 +162,120 @@ pointers:
     file_path: lib/noizu/jira/client.ex
     function: new
     kind: function
-    line: 49
+    line: 51
     locations:
       - file_path: lib/noizu/jira/client.ex
-        line: 49
+        line: 51
     token: 𓟱𓖇𔇁𓹕
-    updated_at: 2026-10-16T21:56:50.913171Z
+    updated_at: 2026-10-16T22:04:19.623261Z
   82505504-8aa7-5089-8216-4d735e20b2cc:
     created_at: 2026-10-16T21:56:50.913375Z
     description: Lazily streams a sprint's issues.
     file_path: lib/noizu/jira/agile/sprints.ex
     function: issues_stream
     kind: function
-    line: 78
+    line: 68
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 78
+        line: 68
     token: 𔕀𓍮𓞁𓵬
-    updated_at: 2026-10-16T21:56:50.913375Z
+    updated_at: 2026-10-16T22:04:19.623457Z
   9bc0f108-4d88-5e42-bf0a-225a66fb6b32:
     created_at: 2026-10-16T21:56:50.913216Z
     description: list/3
     file_path: lib/noizu/jira/worklogs.ex
     function: list
     kind: function
-    line: 28
+    line: 25
     locations:
       - file_path: lib/noizu/jira/worklogs.ex
-        line: 28
+        line: 25
     token: 𓥹𔅶𓶖𓚢
-    updated_at: 2026-10-16T21:56:50.913216Z
+    updated_at: 2026-10-16T22:04:19.623317Z
   728b11a7-8a10-59b8-aeaf-5e9c28eb90b1:
     created_at: 2026-10-16T21:56:50.913190Z
     description: Approximate result count for a JQL query (no index scan).
     file_path: lib/noizu/jira/search.ex
     function: count
     kind: function
-    line: 70
+    line: 68
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 70
+        line: 68
     token: 𓣿𓩐𓈌𓖁
-    updated_at: 2026-10-16T21:56:50.913190Z
+    updated_at: 2026-10-16T22:04:19.623278Z
   8f5ec483-b5fe-52af-917e-2da611810d82:
     created_at: 2026-10-16T21:56:50.913083Z
     description: Project lookup (platform v3, offset pagination).
     file_path: lib/noizu/jira/projects.ex
     function: Noizu.Jira.Projects
-    kind: module
-    line: 5
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/projects.ex
-        line: 5
+        line: 1
     token: 𓒍𔌊𓩛𔃂
-    updated_at: 2026-10-16T21:56:50.913083Z
+    updated_at: 2026-10-16T22:04:19.623215Z
   615fc1b8-8d15-5129-9ac6-86197130492c:
     created_at: 2026-10-16T21:56:50.913067Z
     description: perform/4
     file_path: lib/noizu/jira/transitions.ex
     function: perform
     kind: function
-    line: 43
+    line: 36
     locations:
       - file_path: lib/noizu/jira/transitions.ex
-        line: 43
+        line: 36
     token: 𓎡𔀑𓔇𓇼
-    updated_at: 2026-10-16T21:56:50.913067Z
+    updated_at: 2026-10-16T22:04:19.623205Z
   85eff2cf-47e4-5742-b230-0e39131b1ae0:
     created_at: 2026-10-16T21:56:50.913220Z
     description: create/3
     file_path: lib/noizu/jira/issues.ex
     function: create
     kind: function
-    line: 31
+    line: 28
     locations:
       - file_path: lib/noizu/jira/issues.ex
-        line: 31
+        line: 28
     token: 𓨅𓨾𓌳𓚠
-    updated_at: 2026-10-16T21:56:50.913220Z
+    updated_at: 2026-10-16T22:04:19.623321Z
   4a7e2ae8-b8c1-528d-8a8a-8684c61196bc:
     created_at: 2026-10-16T21:56:50.913400Z
     description: 'Searches statuses (offset page: `{values, startAt, maxResults, total, isLast}`).'
     file_path: lib/noizu/jira/statuses.ex
     function: search
     kind: function
-    line: 24
+    line: 26
     locations:
       - file_path: lib/noizu/jira/statuses.ex
-        line: 24
+        line: 26
     token: 𔘻𓅤𓊒𓣬
-    updated_at: 2026-10-16T21:56:50.913400Z
+    updated_at: 2026-10-16T22:04:19.623479Z
   fb656a22-c6ab-5982-b91a-d51d387190bf:
     created_at: 2026-10-16T21:56:17.630956Z
     description: Elixir client for the Jira Cloud REST API (platform v3 and the Jira Software agile API).
     file_path: lib/noizu/jira.ex
     function: Noizu.Jira
-    kind: module
-    line: 25
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira.ex
-        line: 25
+        line: 1
     token: 𓗋𔀚𓌤𔄏
-    updated_at: 2026-10-16T21:56:17.630956Z
+    updated_at: 2026-10-16T22:04:19.623230Z
   2632c5f2-7c3e-52f5-9790-2222d29a7403:
     created_at: 2026-10-16T21:56:50.913035Z
     description: get/3
     file_path: lib/noizu/jira/issues.ex
     function: get
     kind: function
-    line: 50
+    line: 43
     locations:
       - file_path: lib/noizu/jira/issues.ex
-        line: 50
+        line: 43
     token: 𓊑𓬖𔕭𓝣
-    updated_at: 2026-10-16T21:56:50.913035Z
+    updated_at: 2026-10-16T22:04:19.623183Z
   33f0dacd-2c29-5b2c-89e2-f8f28ddd7b30:
     created_at: 2026-10-16T21:56:50.913012Z
     description: Noizu.Jira.Pagination module
@@ -293,49 +293,49 @@ pointers:
     description: Issue attachments (platform v3).
     file_path: lib/noizu/jira/attachments.ex
     function: Noizu.Jira.Attachments
-    kind: module
-    line: 7
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/attachments.ex
-        line: 7
+        line: 1
     token: 𓢒𓥿𔑌𓳷
-    updated_at: 2026-10-16T21:56:50.913183Z
+    updated_at: 2026-10-16T22:04:19.623271Z
   6d58b279-06aa-58bd-9ae5-12480551c477:
     created_at: 2026-10-16T21:56:50.913004Z
     description: Jira Software sprints (`/rest/agile/1.0`).
     file_path: lib/noizu/jira/agile/sprints.ex
     function: Noizu.Jira.Agile.Sprints
-    kind: module
-    line: 6
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 6
+        line: 1
     token: 𓃘𓒎𓴚𔘧
-    updated_at: 2026-10-16T21:56:50.913004Z
+    updated_at: 2026-10-16T22:04:19.623161Z
   16565f56-7b17-5d71-8457-8a8b6184ae0a:
     created_at: 2026-10-16T21:56:50.913239Z
     description: get/3
     file_path: lib/noizu/jira/projects.ex
     function: get
     kind: function
-    line: 58
+    line: 55
     locations:
       - file_path: lib/noizu/jira/projects.ex
-        line: 58
+        line: 55
     token: 𓱌𓭠𔒨𓮚
-    updated_at: 2026-10-16T21:56:50.913239Z
+    updated_at: 2026-10-16T22:04:19.623339Z
   83412b05-0ef7-5389-bf82-0ae0c8a56046:
     created_at: 2026-10-16T21:56:50.913301Z
     description: get/4
     file_path: lib/noizu/jira/comments.ex
     function: get
     kind: function
-    line: 75
+    line: 64
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 75
+        line: 64
     token: 𔀪𓱅𓘽𓦦
-    updated_at: 2026-10-16T21:56:50.913301Z
+    updated_at: 2026-10-16T22:04:19.623392Z
   db55685c-63ce-5ba1-9199-4026ba3913f2:
     created_at: 2026-10-16T21:56:50.913096Z
     description: from_exception/1
@@ -353,289 +353,289 @@ pointers:
     description: JQL issue search via the replacement endpoint `POST /rest/api/3/search/jql`
     file_path: lib/noizu/jira/search.ex
     function: Noizu.Jira.Search
-    kind: module
-    line: 9
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 9
+        line: 1
     token: 𓥯𓢷𓩤𓣸
-    updated_at: 2026-10-16T21:56:50.913209Z
+    updated_at: 2026-10-16T22:04:19.623309Z
   4dffdf20-b2be-5228-8a6c-05ec10cd51f1:
     created_at: 2026-10-16T21:56:50.913155Z
     description: Issue workflow transitions (platform v3).
     file_path: lib/noizu/jira/transitions.ex
     function: Noizu.Jira.Transitions
-    kind: module
-    line: 5
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/transitions.ex
-        line: 5
+        line: 1
     token: 𓞮𓬥𓊭𔕑
-    updated_at: 2026-10-16T21:56:50.913155Z
+    updated_at: 2026-10-16T22:04:19.623258Z
   1f5cb5a9-e165-53d0-b0e3-62f3d9ca64f3:
     created_at: 2026-10-16T21:56:50.913249Z
     description: update/4
     file_path: lib/noizu/jira/worklogs.ex
     function: update
     kind: function
-    line: 97
+    line: 86
     locations:
       - file_path: lib/noizu/jira/worklogs.ex
-        line: 97
+        line: 86
     token: 𓳶𔒚𔖉𔀓
-    updated_at: 2026-10-16T21:56:50.913249Z
+    updated_at: 2026-10-16T22:04:19.623350Z
   870e711c-5957-5cf2-a239-9edc00187c89:
     created_at: 2026-10-16T21:56:50.912974Z
     description: Lists all statuses (legacy flat array).
     file_path: lib/noizu/jira/statuses.ex
     function: list
     kind: function
-    line: 16
+    line: 18
     locations:
       - file_path: lib/noizu/jira/statuses.ex
-        line: 16
+        line: 18
     token: 𐦅𔙿𓖃𓥉
-    updated_at: 2026-10-16T21:56:50.912974Z
+    updated_at: 2026-10-16T22:04:19.623131Z
   111b95d2-99ea-593f-a0be-ac91d82b081e:
     created_at: 2026-10-16T21:56:50.913351Z
     description: offset_next/3
     file_path: lib/noizu/jira/pagination.ex
     function: offset_next
     kind: function
-    line: 60
+    line: 53
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 60
+        line: 53
     token: 𔌹𔆕𔘍𓙾
-    updated_at: 2026-10-16T21:56:50.913351Z
+    updated_at: 2026-10-16T22:04:19.623439Z
   129d5d2a-36e6-5e4c-8492-29d5b31366fe:
     created_at: 2026-10-16T21:56:50.913397Z
     description: delete/2
     file_path: lib/noizu/jira/agile/boards.ex
     function: delete
     kind: function
-    line: 78
+    line: 75
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 78
+        line: 75
     token: 𔘨𔅛𓳯𓁎
-    updated_at: 2026-10-16T21:56:50.913397Z
+    updated_at: 2026-10-16T22:04:19.623475Z
   24fd3db5-c00f-58b5-a1d2-9557d09e91ab:
     created_at: 2026-10-16T21:56:50.913053Z
     description: 'Lists boards (offset page: `{values, startAt, maxResults, total, isLast}`).'
     file_path: lib/noizu/jira/agile/boards.ex
     function: list
     kind: function
-    line: 20
+    line: 22
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 20
+        line: 22
     token: 𓋥𔍶𓈇𔂫
-    updated_at: 2026-10-16T21:56:50.913053Z
+    updated_at: 2026-10-16T22:04:19.623194Z
   ce3a9999-1d77-55d6-aaf9-882c67c21a1e:
     created_at: 2026-10-16T21:56:50.913393Z
     description: Issue comments (platform v3, offset pagination).
     file_path: lib/noizu/jira/comments.ex
     function: Noizu.Jira.Comments
-    kind: module
-    line: 8
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 8
+        line: 1
     token: 𔗩𓭼𔄜𓂾
-    updated_at: 2026-10-16T21:56:50.913393Z
+    updated_at: 2026-10-16T22:04:19.623472Z
   9655b59e-ec06-5d55-a93e-04fc536091ce:
     created_at: 2026-10-16T21:56:50.913404Z
     description: delete/4
     file_path: lib/noizu/jira/worklogs.ex
     function: delete
     kind: function
-    line: 121
+    line: 106
     locations:
       - file_path: lib/noizu/jira/worklogs.ex
-        line: 121
+        line: 106
     token: 𔙡𓨮𔄫𔘎
-    updated_at: 2026-10-16T21:56:50.913404Z
+    updated_at: 2026-10-16T22:04:19.623482Z
   ed961b33-1f69-53e7-becb-aa792736489f:
     created_at: 2026-10-16T21:56:50.913348Z
     description: search/3
     file_path: lib/noizu/jira/search.ex
     function: search
     kind: function
-    line: 33
+    line: 30
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 33
+        line: 30
     token: 𔉬𔙛𓲕𓕿
-    updated_at: 2026-10-16T21:56:50.913348Z
+    updated_at: 2026-10-16T22:04:19.623435Z
   8f7cd28e-015c-598b-b829-49c664f5ffbe:
     created_at: 2026-10-16T21:56:50.913315Z
     description: params_query/1
     file_path: lib/noizu/jira/request.ex
     function: params_query
     kind: function
-    line: 92
+    line: 84
     locations:
       - file_path: lib/noizu/jira/request.ex
-        line: 92
+        line: 84
     token: 𔇂𓉨𓧓𔁾
-    updated_at: 2026-10-16T21:56:50.913315Z
+    updated_at: 2026-10-16T22:04:19.623403Z
   cf01f64b-772a-522f-a9ec-00d8c9189d29:
     created_at: 2026-10-16T21:56:50.913072Z
     description: search/3
     file_path: lib/noizu/jira/users.ex
     function: search
     kind: function
-    line: 45
+    line: 42
     locations:
       - file_path: lib/noizu/jira/users.ex
-        line: 45
+        line: 42
     token: 𓏨𓕟𓠘𓪹
-    updated_at: 2026-10-16T21:56:50.913072Z
+    updated_at: 2026-10-16T22:04:19.623208Z
   11c26ab3-27fa-534f-a8f3-69f96bf2f4fc:
     created_at: 2026-10-16T21:56:50.913062Z
     description: Minimal Atlassian Document Format (ADF) helper.
     file_path: lib/noizu/jira/adf.ex
     function: Noizu.Jira.ADF
-    kind: module
-    line: 26
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/adf.ex
-        line: 26
+        line: 1
     token: 𓎝𔋀𓷧𓳼
-    updated_at: 2026-10-16T21:56:50.913062Z
+    updated_at: 2026-10-16T22:04:19.623201Z
   7558b4e2-9e93-595c-aa11-6538c78970f5:
     created_at: 2026-10-16T21:56:50.913382Z
     description: array_next/4
     file_path: lib/noizu/jira/pagination.ex
     function: array_next
     kind: function
-    line: 100
+    line: 89
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 100
+        line: 89
     token: 𔖋𓪯𓩠𓼅
-    updated_at: 2026-10-16T21:56:50.913382Z
+    updated_at: 2026-10-16T22:04:19.623461Z
   d42c600a-e320-5a95-8add-02963ff4bd85:
     created_at: 2026-10-16T21:56:50.913280Z
     description: Field metadata (platform v3).
     file_path: lib/noizu/jira/fields.ex
     function: Noizu.Jira.Fields
-    kind: module
-    line: 9
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/fields.ex
-        line: 9
+        line: 1
     token: 𓺞𓃩𔐎𔅵
-    updated_at: 2026-10-16T21:56:50.913280Z
+    updated_at: 2026-10-16T22:04:19.623371Z
   b772e590-4883-559f-9848-2891f4f25104:
     created_at: 2026-10-16T21:56:50.912991Z
     description: create/3
     file_path: lib/noizu/jira/issue_links.ex
     function: create
     kind: function
-    line: 16
+    line: 13
     locations:
       - file_path: lib/noizu/jira/issue_links.ex
-        line: 16
+        line: 13
     token: 𓀘𓌘𓨣𓻄
-    updated_at: 2026-10-16T21:56:50.912991Z
+    updated_at: 2026-10-16T22:04:19.623149Z
   932605b1-7340-5f28-ada9-98ef159bf95b:
     created_at: 2026-10-16T21:56:50.913312Z
     description: Fetches a sprint by id.
     file_path: lib/noizu/jira/agile/sprints.ex
     function: get
     kind: function
-    line: 16
+    line: 18
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 16
+        line: 18
     token: 𔆠𓽣𓍒𓢋
-    updated_at: 2026-10-16T21:56:50.913312Z
+    updated_at: 2026-10-16T22:04:19.623400Z
   6db2c14d-7855-5c59-b843-3b3cbe157589:
     created_at: 2026-10-16T21:56:50.913298Z
     description: content/2
     file_path: lib/noizu/jira/attachments.ex
     function: content
     kind: function
-    line: 62
+    line: 55
     locations:
       - file_path: lib/noizu/jira/attachments.ex
-        line: 62
+        line: 55
     token: 𔀠𓼽𔉳𓭉
-    updated_at: 2026-10-16T21:56:50.913298Z
+    updated_at: 2026-10-16T22:04:19.623389Z
   da7e8b2b-e376-5eb4-85b0-f9f4686e680b:
     created_at: 2026-10-16T21:56:50.913330Z
     description: Lazily streams a board's issues following `nextPageToken`.
     file_path: lib/noizu/jira/agile/boards.ex
     function: issues_stream
     kind: function
-    line: 121
+    line: 115
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 121
+        line: 115
     token: 𔈉𓶇𓗚𓲻
-    updated_at: 2026-10-16T21:56:50.913330Z
+    updated_at: 2026-10-16T22:04:19.623418Z
   014ff701-3377-5a30-898e-f7cd0ee3af5d:
     created_at: 2026-10-16T21:56:50.913202Z
     description: Jira Software boards.
     file_path: lib/noizu/jira/agile/boards.ex
     function: Noizu.Jira.Agile.Boards
-    kind: module
-    line: 9
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 9
+        line: 1
     token: 𓤓𓜌𓈲𔎍
-    updated_at: 2026-10-16T21:56:50.913202Z
+    updated_at: 2026-10-16T22:04:19.623285Z
   aa6fbce2-02c7-5f1e-8c78-8ba57559264e:
     created_at: 2026-10-16T21:56:50.913265Z
     description: Returns the current user.
     file_path: lib/noizu/jira/users.ex
     function: me
     kind: function
-    line: 14
+    line: 16
     locations:
       - file_path: lib/noizu/jira/users.ex
-        line: 14
+        line: 16
     token: 𓷁𓔷𓬌𓤞
-    updated_at: 2026-10-16T21:56:50.913265Z
+    updated_at: 2026-10-16T22:04:19.623360Z
   b3c4dadc-f871-5e9f-baef-5ddb1e721346:
     created_at: 2026-10-16T21:56:50.913175Z
     description: add/4
     file_path: lib/noizu/jira/comments.ex
     function: add
     kind: function
-    line: 58
+    line: 51
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 58
+        line: 51
     token: 𓠄𓹝𓾸𓳖
-    updated_at: 2026-10-16T21:56:50.913175Z
+    updated_at: 2026-10-16T22:04:19.623265Z
   41bab1e0-509f-5525-92f2-3b2e203c3e95:
     created_at: 2026-10-16T21:56:50.913235Z
     description: Fetches an issue link by id.
     file_path: lib/noizu/jira/issue_links.ex
     function: get
     kind: function
-    line: 54
+    line: 48
     locations:
       - file_path: lib/noizu/jira/issue_links.ex
-        line: 54
+        line: 48
     token: 𓬏𓘾𓇎𔒅
-    updated_at: 2026-10-16T21:56:50.913235Z
+    updated_at: 2026-10-16T22:04:19.623335Z
   c5f48ca2-2fba-529b-bbe7-8f41a0ab0454:
     created_at: 2026-10-16T21:56:50.913125Z
     description: Lists fields (raw body).
     file_path: lib/noizu/jira/fields.ex
     function: list
     kind: function
-    line: 17
+    line: 19
     locations:
       - file_path: lib/noizu/jira/fields.ex
-        line: 17
+        line: 19
     token: 𓚡𓨐𓁺𔔄
-    updated_at: 2026-10-16T21:56:50.913125Z
+    updated_at: 2026-10-16T22:04:19.623240Z
   f589f03a-296f-52a1-a19e-142db32a64cc:
     created_at: 2026-10-16T21:56:50.913057Z
     description: authorization_header/1
@@ -654,168 +654,168 @@ pointers:
     file_path: lib/noizu/jira/statuses.ex
     function: stream
     kind: function
-    line: 40
+    line: 42
     locations:
       - file_path: lib/noizu/jira/statuses.ex
-        line: 40
+        line: 42
     token: 𓛛𓎅𓡶𓼷
-    updated_at: 2026-10-16T21:56:50.913136Z
+    updated_at: 2026-10-16T22:04:19.623247Z
   00ca172a-8001-5f0b-a3f3-fd24c485e3de:
     created_at: 2026-10-16T21:56:50.913242Z
     description: Statuses (platform v3).
     file_path: lib/noizu/jira/statuses.ex
     function: Noizu.Jira.Statuses
-    kind: module
-    line: 8
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/statuses.ex
-        line: 8
+        line: 1
     token: 𓱓𔖮𓥓𓚞
-    updated_at: 2026-10-16T21:56:50.913242Z
+    updated_at: 2026-10-16T22:04:19.623342Z
   4836243c-356a-5f03-90c9-402f66bc7546:
     created_at: 2026-10-16T21:56:50.913355Z
     description: Fetches a board by id.
     file_path: lib/noizu/jira/agile/boards.ex
     function: get
     kind: function
-    line: 58
+    line: 60
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 58
+        line: 60
     token: 𔏁𓴌𓞡𓎶
-    updated_at: 2026-10-16T21:56:50.913355Z
+    updated_at: 2026-10-16T22:04:19.623443Z
   c11ec108-1dff-575f-b235-b69849016cb5:
     created_at: 2026-10-16T21:56:50.913101Z
     description: User lookup (platform v3).
     file_path: lib/noizu/jira/users.ex
     function: Noizu.Jira.Users
-    kind: module
-    line: 6
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/users.ex
-        line: 6
+        line: 1
     token: 𓕫𓥥𓐆𓋵
-    updated_at: 2026-10-16T21:56:50.913101Z
+    updated_at: 2026-10-16T22:04:19.623226Z
   025d4996-7d5e-5c8a-9b09-b6c6b12a77b7:
     created_at: 2026-10-16T21:56:50.913091Z
     description: delete/2
     file_path: lib/noizu/jira/issue_links.ex
     function: delete
     kind: function
-    line: 67
+    line: 56
     locations:
       - file_path: lib/noizu/jira/issue_links.ex
-        line: 67
+        line: 56
     token: 𓔥𓓕𓍴𓨇
-    updated_at: 2026-10-16T21:56:50.913091Z
+    updated_at: 2026-10-16T22:04:19.623219Z
   54248c51-d73c-54e3-982a-8e5102ae7f77:
     created_at: 2026-10-16T21:56:50.913291Z
     description: Creates a board from a payload (`name`, `type`, `location`, `filterId`, ...).
     file_path: lib/noizu/jira/agile/boards.ex
     function: create
     kind: function
-    line: 67
+    line: 69
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 67
+        line: 69
     token: 𓿀𓮺𓺨𓋗
-    updated_at: 2026-10-16T21:56:50.913291Z
+    updated_at: 2026-10-16T22:04:19.623381Z
   68dd41cc-8773-5af9-bbf9-15baa2b95d57:
     created_at: 2026-10-16T21:56:50.913113Z
     description: Issue links (platform v3).
     file_path: lib/noizu/jira/issue_links.ex
     function: Noizu.Jira.IssueLinks
-    kind: module
-    line: 5
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/issue_links.ex
-        line: 5
+        line: 1
     token: 𓙷𔏱𓜼𔄧
-    updated_at: 2026-10-16T21:56:50.913113Z
+    updated_at: 2026-10-16T22:04:19.623233Z
   2f6c6b8f-bcbf-58bf-8dd2-1fc75c65e275:
     created_at: 2026-10-16T21:56:50.913149Z
     description: add/3
     file_path: lib/noizu/jira/worklogs.ex
     function: add
     kind: function
-    line: 73
+    line: 66
     locations:
       - file_path: lib/noizu/jira/worklogs.ex
-        line: 73
+        line: 66
     token: 𓜖𔅗𓻄𓓅
-    updated_at: 2026-10-16T21:56:50.913149Z
+    updated_at: 2026-10-16T22:04:19.623254Z
   d8a32f9b-ca65-50e0-92be-4b512f2a7686:
     created_at: 2026-10-16T21:56:50.913323Z
     description: Lazily streams boards.
     file_path: lib/noizu/jira/agile/boards.ex
     function: stream
     kind: function
-    line: 42
+    line: 44
     locations:
       - file_path: lib/noizu/jira/agile/boards.ex
-        line: 42
+        line: 44
     token: 𔈄𔇝𓝭𓊶
-    updated_at: 2026-10-16T21:56:50.913323Z
+    updated_at: 2026-10-16T22:04:19.623411Z
   0fff0d75-e5f3-5d9b-8c36-3a2677b5f740:
     created_at: 2026-10-16T21:56:50.913194Z
     description: update/3
     file_path: lib/noizu/jira/agile/sprints.ex
     function: update
     kind: function
-    line: 36
+    line: 33
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 36
+        line: 33
     token: 𓤄𓦚𔎯𓷀
-    updated_at: 2026-10-16T21:56:50.913194Z
+    updated_at: 2026-10-16T22:04:19.623281Z
   396b7f41-4e92-528d-94cf-c915ccd0c281:
     created_at: 2026-10-16T21:56:50.913008Z
     description: update/5
     file_path: lib/noizu/jira/comments.ex
     function: update
     kind: function
-    line: 94
+    line: 79
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 94
+        line: 79
     token: 𓄆𔈳𓏶𓇁
-    updated_at: 2026-10-16T21:56:50.913008Z
+    updated_at: 2026-10-16T22:04:19.623164Z
   835fd340-f7b5-51a0-9229-4d562b676edb:
     created_at: 2026-10-16T21:56:50.913031Z
     description: Error returned by every fallible client call.
     file_path: lib/noizu/jira/error.ex
     function: Noizu.Jira.Error
-    kind: module
-    line: 21
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/error.ex
-        line: 21
+        line: 1
     token: 𓊃𔓚𓩏𓽛
-    updated_at: 2026-10-16T21:56:50.913031Z
+    updated_at: 2026-10-16T22:04:19.623179Z
   bf721a6a-4265-5ce3-bbb0-eafdfabe0b18:
     created_at: 2026-10-16T21:56:50.913268Z
     description: doc/1
     file_path: lib/noizu/jira/adf.ex
     function: doc
     kind: function
-    line: 35
+    line: 32
     locations:
       - file_path: lib/noizu/jira/adf.ex
-        line: 35
+        line: 32
     token: 𓸋𓍲𔐐𓤨
-    updated_at: 2026-10-16T21:56:50.913268Z
+    updated_at: 2026-10-16T22:04:19.623364Z
   da64202a-1943-5a58-bc27-02995200f0d3:
     created_at: 2026-10-16T21:56:50.913016Z
     description: delete/2
     file_path: lib/noizu/jira/attachments.ex
     function: delete
     kind: function
-    line: 79
+    line: 68
     locations:
       - file_path: lib/noizu/jira/attachments.ex
-        line: 79
+        line: 68
     token: 𓇔𓢬𓌂𓨃
-    updated_at: 2026-10-16T21:56:50.913016Z
+    updated_at: 2026-10-16T22:04:19.623171Z
   27ea9de7-b4dc-5f0b-9e4c-67d76c1d127b:
     created_at: 2026-10-16T21:56:50.913337Z
     description: exception/1
@@ -834,60 +834,60 @@ pointers:
     file_path: lib/noizu/jira/request.ex
     function: request
     kind: function
-    line: 27
+    line: 24
     locations:
       - file_path: lib/noizu/jira/request.ex
-        line: 27
+        line: 24
     token: 𓜃𓣇𔌻𓓜
-    updated_at: 2026-10-16T21:56:50.913143Z
+    updated_at: 2026-10-16T22:04:19.623250Z
   cc19d9d7-d678-5ad4-9e2f-13b82683968a:
     created_at: 2026-10-16T21:56:50.913340Z
     description: list/3
     file_path: lib/noizu/jira/comments.ex
     function: list
     kind: function
-    line: 22
+    line: 19
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 22
+        line: 19
     token: 𔈵𓙖𓉙𓖪
-    updated_at: 2026-10-16T21:56:50.913340Z
+    updated_at: 2026-10-16T22:04:19.623428Z
   53f9f37b-4af0-5f39-ac76-3b5582e323dc:
     created_at: 2026-10-16T21:56:50.913131Z
     description: 'Searches projects (offset page: `{values, startAt, maxResults, total, isLast}`).'
     file_path: lib/noizu/jira/projects.ex
     function: search
     kind: function
-    line: 13
+    line: 15
     locations:
       - file_path: lib/noizu/jira/projects.ex
-        line: 13
+        line: 15
     token: 𓚵𓣆𔋃𓶜
-    updated_at: 2026-10-16T21:56:50.913131Z
+    updated_at: 2026-10-16T22:04:19.623243Z
   8bd5bb77-e69e-517d-bc07-b86d58c2b88a:
     created_at: 2026-10-16T21:56:50.913213Z
     description: message/1
     file_path: lib/noizu/jira/error.ex
     function: message
     kind: function
-    line: 73
+    line: 70
     locations:
       - file_path: lib/noizu/jira/error.ex
-        line: 73
+        line: 70
     token: 𓥹𓱘𓵘𓃪
-    updated_at: 2026-10-16T21:56:50.913213Z
+    updated_at: 2026-10-16T22:04:19.623314Z
   603f6256-de13-5c2b-8a26-f410b3277592:
     created_at: 2026-10-16T21:56:50.913224Z
     description: add/4
     file_path: lib/noizu/jira/attachments.ex
     function: add
     kind: function
-    line: 27
+    line: 24
     locations:
       - file_path: lib/noizu/jira/attachments.ex
-        line: 27
+        line: 24
     token: 𓨉𓅸𓐉𔖲
-    updated_at: 2026-10-16T21:56:50.913224Z
+    updated_at: 2026-10-16T22:04:19.623324Z
   c9664d04-847e-552d-a10e-583bb36fe4de:
     created_at: 2026-10-16T21:56:50.913119Z
     description: base_url/1
@@ -906,189 +906,189 @@ pointers:
     file_path: lib/noizu/jira/pagination.ex
     function: stream
     kind: function
-    line: 23
+    line: 20
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 23
+        line: 20
     token: 𔁄𔇪𔏇𓫱
-    updated_at: 2026-10-16T21:56:50.913308Z
+    updated_at: 2026-10-16T22:04:19.623396Z
   0ef721c7-0bb2-5d75-9ec5-d6a5e1695623:
     created_at: 2026-10-16T21:56:50.913319Z
     description: Issue types (platform v3).
     file_path: lib/noizu/jira/issue_types.ex
     function: Noizu.Jira.IssueTypes
-    kind: module
-    line: 5
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/issue_types.ex
-        line: 5
+        line: 1
     token: 𔇘𓚻𓆷𔌣
-    updated_at: 2026-10-16T21:56:50.913319Z
+    updated_at: 2026-10-16T22:04:19.623407Z
   a14ce0e8-a9dd-55fd-a553-8f6b7901ed7d:
     created_at: 2026-10-16T21:56:50.913261Z
     description: Immutable client configuration, passed explicitly to every call.
     file_path: lib/noizu/jira/client.ex
     function: Noizu.Jira.Client
-    kind: module
-    line: 26
+    kind: function
+    line: 1
     locations:
       - file_path: lib/noizu/jira/client.ex
-        line: 26
+        line: 1
     token: 𓴶𔙬𓽸𓏝
-    updated_at: 2026-10-16T21:56:50.913261Z
+    updated_at: 2026-10-16T22:04:19.623357Z
   d4dcbdb7-520f-5335-8f2e-f3e6a0c41521:
     created_at: 2026-10-16T21:56:50.913287Z
     description: delete/3
     file_path: lib/noizu/jira/comments.ex
     function: delete
     kind: function
-    line: 114
+    line: 95
     locations:
       - file_path: lib/noizu/jira/comments.ex
-        line: 114
+        line: 95
     token: 𓾃𓍞𔑯𔎡
-    updated_at: 2026-10-16T21:56:50.913287Z
+    updated_at: 2026-10-16T22:04:19.623378Z
   f170dc63-cd0e-5884-a076-40c536ce7c86:
     created_at: 2026-10-16T21:56:50.913044Z
     description: Lazily streams every worklog.
     file_path: lib/noizu/jira/worklogs.ex
     function: stream
     kind: function
-    line: 40
+    line: 38
     locations:
       - file_path: lib/noizu/jira/worklogs.ex
-        line: 40
+        line: 38
     token: 𓊲𓲑𓷑𔄦
-    updated_at: 2026-10-16T21:56:50.913044Z
+    updated_at: 2026-10-16T22:04:19.623191Z
   f26b27ff-6c7d-5b5e-b0d2-dfd5943d3de9:
     created_at: 2026-10-16T21:56:50.912996Z
     description: Lists issue types for the license.
     file_path: lib/noizu/jira/issue_types.ex
     function: list
     kind: function
-    line: 13
+    line: 15
     locations:
       - file_path: lib/noizu/jira/issue_types.ex
-        line: 13
+        line: 15
     token: 𓁅𓆓𓒜𓖹
-    updated_at: 2026-10-16T21:56:50.912996Z
+    updated_at: 2026-10-16T22:04:19.623153Z
   66195385-477e-5126-8e1a-f096e7e174ae:
     created_at: 2026-10-16T21:56:50.913276Z
     description: Fetches a user.
     file_path: lib/noizu/jira/users.ex
     function: get
     kind: function
-    line: 22
+    line: 24
     locations:
       - file_path: lib/noizu/jira/users.ex
-        line: 22
+        line: 24
     token: 𓹦𔋚𓎃𔅮
-    updated_at: 2026-10-16T21:56:50.913276Z
+    updated_at: 2026-10-16T22:04:19.623367Z
   88180b7a-49f8-550a-992c-21a20f6419ab:
     created_at: 2026-10-16T21:56:50.913246Z
     description: Lazily streams users across pages.
     file_path: lib/noizu/jira/users.ex
     function: stream
     kind: function
-    line: 58
+    line: 56
     locations:
       - file_path: lib/noizu/jira/users.ex
-        line: 58
+        line: 56
     token: 𓲤𓈜𓇉𓆛
-    updated_at: 2026-10-16T21:56:50.913246Z
+    updated_at: 2026-10-16T22:04:19.623346Z
   449b1d85-8089-5f91-9c01-31e0480f656f:
     created_at: 2026-10-16T21:56:50.913368Z
     description: edit/4
     file_path: lib/noizu/jira/issues.ex
     function: edit
     kind: function
-    line: 70
+    line: 59
     locations:
       - file_path: lib/noizu/jira/issues.ex
-        line: 70
+        line: 59
     token: 𔑵𓗏𔂺𐦏
-    updated_at: 2026-10-16T21:56:50.913368Z
+    updated_at: 2026-10-16T22:04:19.623450Z
   ff05c5e7-1e16-5a94-b8c2-4209d9ad5a28:
     created_at: 2026-10-16T21:56:50.912987Z
     description: link/5
     file_path: lib/noizu/jira/issue_links.ex
     function: link
     kind: function
-    line: 33
+    line: 26
     locations:
       - file_path: lib/noizu/jira/issue_links.ex
-        line: 33
+        line: 26
     token: 𐦓𓕮𔌩𓭈
-    updated_at: 2026-10-16T21:56:50.912987Z
+    updated_at: 2026-10-16T22:04:19.623144Z
   7f7ca069-e8f0-51aa-9473-b87de74b5816:
     created_at: 2026-10-16T21:56:50.913386Z
     description: get/3
     file_path: lib/noizu/jira/issue_types.ex
     function: get
     kind: function
-    line: 24
+    line: 21
     locations:
       - file_path: lib/noizu/jira/issue_types.ex
-        line: 24
+        line: 21
     token: 𔖰𔀯𓆻𓝖
-    updated_at: 2026-10-16T21:56:50.913386Z
+    updated_at: 2026-10-16T22:04:19.623464Z
   2cf8b6ff-be0c-583f-91a1-0cd6cdd095a2:
     created_at: 2026-10-16T21:56:50.913000Z
     description: delete/2
     file_path: lib/noizu/jira/agile/sprints.ex
     function: delete
     kind: function
-    line: 50
+    line: 43
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 50
+        line: 43
     token: 𓃂𓴂𔗰𔆲
-    updated_at: 2026-10-16T21:56:50.913000Z
+    updated_at: 2026-10-16T22:04:19.623157Z
   f80ecee9-717d-58a4-af93-d27e2e074818:
     created_at: 2026-10-16T21:56:50.913294Z
     description: params/2
     file_path: lib/noizu/jira/request.ex
     function: params
     kind: function
-    line: 69
+    line: 62
     locations:
       - file_path: lib/noizu/jira/request.ex
-        line: 69
+        line: 62
     token: 𔀌𓣲𓦅𔓸
-    updated_at: 2026-10-16T21:56:50.913294Z
+    updated_at: 2026-10-16T22:04:19.623385Z
   7c35f1ad-c8c9-5f9f-9730-d1816491fa58:
     created_at: 2026-10-16T21:56:50.913231Z
     description: Next step for a nextPageToken page.
     file_path: lib/noizu/jira/pagination.ex
     function: token_next
     kind: function
-    line: 79
+    line: 73
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 79
+        line: 73
     token: 𓩰𔙸𔗲𔎈
-    updated_at: 2026-10-16T21:56:50.913231Z
+    updated_at: 2026-10-16T22:04:19.623332Z
   cf01f3a4-9f47-5066-8607-f27b238754f9:
     created_at: 2026-10-16T21:56:50.913283Z
     description: Creates a sprint from a payload (`name`, `startDate`, `endDate`, `originBoardId`, ...).
     file_path: lib/noizu/jira/agile/sprints.ex
     function: create
     kind: function
-    line: 25
+    line: 27
     locations:
       - file_path: lib/noizu/jira/agile/sprints.ex
-        line: 25
+        line: 27
     token: 𓻰𓦥𓛑𓖙
-    updated_at: 2026-10-16T21:56:50.913283Z
+    updated_at: 2026-10-16T22:04:19.623374Z
   7b6fc893-c0a7-590f-9bb5-aa6aef8cc5be:
     created_at: 2026-10-16T21:56:50.913227Z
     description: encode_segment/1
     file_path: lib/noizu/jira/request.ex
     function: encode_segment
     kind: function
-    line: 46
+    line: 42
     locations:
       - file_path: lib/noizu/jira/request.ex
-        line: 46
+        line: 42
     token: 𓩅𓧎𓡀𓊞
-    updated_at: 2026-10-16T21:56:50.913227Z
+    updated_at: 2026-10-16T22:04:19.623328Z

@@ -1,3 +1,4 @@
+# 〚🔧:𓗋𔀚𓌤𔄏〛 Noizu.Jira :: Elixir client for the Jira Cloud REST API (platform v3 and the Jira Software agile API).
 defmodule Noizu.Jira do
   @moduledoc """
   Elixir client for the Jira Cloud REST API (platform v3 and the Jira Software agile API).
@@ -22,6 +23,5 @@ defmodule Noizu.Jira do
   Auth modes, endpoint inventory, pagination semantics, the error model, and the
   retry policy are specified in `docs/API-CONTRACT.md` in the package root.
 
-  〚📦:𓗋𔀚𓌤𔄏〛 Noizu.Jira :: Elixir client for the Jira Cloud REST API (platform v3 and the Jira Software agile API).
   """
 end

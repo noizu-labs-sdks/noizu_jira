@@ -1,3 +1,4 @@
+# 〚🔧:𓎝𔋀𓷧𓳼〛 Noizu.Jira.ADF :: Minimal Atlassian Document Format (ADF) helper.
 defmodule Noizu.Jira.ADF do
   @moduledoc """
   Minimal Atlassian Document Format (ADF) helper.
@@ -23,17 +24,12 @@ defmodule Noizu.Jira.ADF do
   structured documents can be supplied directly wherever this library asks for a
   comment or description.
 
-  〚📦:𓎝𔋀𓷧𓳼〛 Noizu.Jira.ADF :: Minimal Atlassian Document Format (ADF) helper.
   """
 
   @type adf :: map()
 
   @spec doc(String.t() | adf()) :: adf()
-  @doc """
-  How: takes `%{"type" => "doc"} = document`; returns `adf()`
-
-  〚🔧:𓸋𓍲𔐐𓤨〛 doc :: doc/1
-  """
+  # 〚🔧:𓸋𓍲𔐐𓤨〛 doc :: doc/1
   def doc(%{"type" => "doc"} = document), do: document
 
   def doc(text) when is_binary(text) do

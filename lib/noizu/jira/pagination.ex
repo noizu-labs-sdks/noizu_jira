@@ -17,11 +17,7 @@ defmodule Noizu.Jira.Pagination do
   @type next :: (page() -> {:more, (term() -> {:ok, page()} | {:error, Error.t()})} | :done)
 
   @spec stream(fetch(), (page() -> [term()]), next()) :: Enumerable.t()
-  @doc """
-  How: takes `fetch`, `items_fun`, `next_fun`; returns `Enumerable.t()`
-
-  〚🔧:𔁄𔇪𔏇𓫱〛 stream :: stream/3
-  """
+  # 〚🔧:𔁄𔇪𔏇𓫱〛 stream :: stream/3
   def stream(fetch, items_fun, next_fun) do
     Stream.resource(
       fn -> :first end,
@@ -54,11 +50,7 @@ defmodule Noizu.Jira.Pagination do
   @spec offset_next(page(), (pos_integer() -> {:ok, page()} | {:error, Error.t()}), (page() ->
                                                                                        [term()])) ::
           next_result()
-  @doc """
-  How: takes `page`, `refetch`, `items_fun`
-
-  〚🔧:𔌹𔆕𔘍𓙾〛 offset_next :: offset_next/3
-  """
+  # 〚🔧:𔌹𔆕𔘍𓙾〛 offset_next :: offset_next/3
   def offset_next(page, refetch, items_fun \\ &Map.get(&1, "values", [])) do
     items = items_fun.(page)
     start_at = Map.get(page, "startAt") || 0
@@ -76,9 +68,9 @@ defmodule Noizu.Jira.Pagination do
   @doc """
   Next step for a nextPageToken page.
 
-  〚🔧:𓩰𔙸𔗲𔎈〛 token_next :: Next step for a nextPageToken page.
   """
   @spec token_next(page(), (String.t() -> {:ok, page()} | {:error, Error.t()})) :: next_result()
+  # 〚🔧:𓩰𔙸𔗲𔎈〛 token_next :: Next step for a nextPageToken page.
   def token_next(page, refetch) do
     case page["nextPageToken"] do
       token when is_binary(token) and token != "" -> {:more, fn -> refetch.(token) end}
@@ -94,11 +86,7 @@ defmodule Noizu.Jira.Pagination do
           pos_integer() | nil
         ) ::
           next_result()
-  @doc """
-  How: takes `[]`, `_refetch`, `_next_start`, `_max_results`
-
-  〚🔧:𔖋𓪯𓩠𓼅〛 array_next :: array_next/4
-  """
+  # 〚🔧:𔖋𓪯𓩠𓼅〛 array_next :: array_next/4
   def array_next([], _refetch, _next_start, _max_results), do: :done
 
   def array_next(items, refetch, next_start, max_results) do
