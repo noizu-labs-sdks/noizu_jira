@@ -15,3 +15,4 @@ Initial release.
 - Requires Req `~> 0.7` (attachment uploads use `form_multipart` streaming).
 - Minimal Atlassian Document Format helper (`Noizu.Jira.ADF.doc/1`) for plain text.
 - Docs: project layout (`docs/PROJ-LAYOUT.md`), architecture (`docs/PROJ-ARCH.md`), and threat model (`docs/THREAT-MODEL.md`) with detail files under `docs/layout/`, `docs/arch/`, `docs/threats/` plus `.summary.md` companions; public API annotated with doc pointers (`.meta/pointers.yaml`).
+- Doc-pointer cleanup: removed duplicate `@doc` stub blocks ("redefining @doc" warnings), normalized markers to `# 〚🔧:uuid〛` comments, added ex_doc extras (`#1`; released to stage/main via `#2`/`#3`).
