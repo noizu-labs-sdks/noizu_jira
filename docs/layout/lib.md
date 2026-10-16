@@ -40,7 +40,7 @@ lib/noizu/jira/
   (`max_attempts: 3, base_sleep_ms: 250, max_sleep_ms: 30_000`).
   `base_url/1` and `authorization_header/1` are `@doc false` internals.
 
-- **`Noizu.Jira.Request`** (`@moduledoc false`) — the only place HTTP happens.
+- **Noizu.Jira.Request** (`@moduledoc false`) — the only place HTTP happens.
   Assembles `base_url <> path <> query`, injects the auth header, builds the
   query string itself (`URI.encode_query`) because Req's `:params` emits
   `key[]=` for lists, which Jira rejects; per-parameter styles are `:csv`
@@ -48,9 +48,10 @@ lib/noizu/jira/
   (`retry: false`) and owns the 429/503 loop: `Retry-After` honored exactly,
   otherwise exponential backoff with 0.7–1.3 jitter, injectable `:sleep` fun.
   Path segments are escaped via `encode_segment/1` (`URI.encode(...,
-  &URI.char_unreserved?/1)`). Decodes errors via `Noizu.Jira.Error.decode/2`.
+  &URI.char_unreserved?/1)`). Decodes errors via the error module's decode
+  function.
 
-- **`Noizu.Jira.Pagination`** (`@moduledoc false`) — `Stream.resource` walker
+- **Noizu.Jira.Pagination** (`@moduledoc false`) — `Stream.resource` walker
   with three termination strategies: `offset_next/3` (defensive about absent
   `total`/`isLast` and legal empty pages), `token_next/2` (`nextPageToken`
   until absent/empty), `array_next/4` (stop when a page is short of
@@ -71,4 +72,4 @@ lib/noizu/jira/
 One module per endpoint family; each function is `(client, ...args, opts \\ [])`
 and delegates to `Request.request/4`. Coverage table with methods, paths, and
 query options: `docs/API-CONTRACT.md` §4. `*_stream` variants page lazily via
-`Noizu.Jira.Pagination`.
+Noizu.Jira.Pagination.

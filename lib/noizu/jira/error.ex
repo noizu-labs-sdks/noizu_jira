@@ -1,3 +1,4 @@
+# 〚🔧:𓊃𔓚𓩏𓽛〛 Noizu.Jira.Error :: Error returned by every fallible client call.
 defmodule Noizu.Jira.Error do
   @moduledoc """
   Error returned by every fallible client call.
@@ -18,7 +19,6 @@ defmodule Noizu.Jira.Error do
   populate `reason` with `status: nil` and are never retried by the client.
   Streams raise this struct on mid-stream page failures.
 
-  〚📦:𓊃𔓚𓩏𓽛〛 Noizu.Jira.Error :: Error returned by every fallible client call.
   """
 
   defexception status: nil, messages: [], field_errors: %{}, reason: nil, body: nil
@@ -67,11 +67,7 @@ defmodule Noizu.Jira.Error do
   end
 
   @impl true
-  @doc """
-  How: takes `%__MODULE__{status: nil, reason: reason}`; guards `is_binary(reason) and reason != "",`
-
-  〚🔧:𓥹𓱘𓵘𓃪〛 message :: message/1
-  """
+  # 〚🔧:𓥹𓱘𓵘𓃪〛 message :: message/1
   def message(%__MODULE__{status: nil, reason: reason}) when is_binary(reason) and reason != "",
     do: "jira request failed: " <> reason
 

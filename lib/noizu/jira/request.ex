@@ -21,11 +21,7 @@ defmodule Noizu.Jira.Request do
 
   @spec request(Client.t(), method(), String.t(), opts()) ::
           {:ok, term()} | {:error, Error.t()}
-  @doc """
-  How: takes `client`, `method`, `path`, `opts`
-
-  〚🔧:𓜃𓣇𔌻𓓜〛 request :: request/4
-  """
+  # 〚🔧:𓜃𓣇𔌻𓓜〛 request :: request/4
   def request(client, method, path, opts \\ []) do
     query = params_query(opts[:params])
 
@@ -63,11 +59,7 @@ defmodule Noizu.Jira.Request do
   @spec params([{atom(), atom()} | {atom(), atom(), :csv | :multi}], keyword()) :: [
           {String.t(), String.t()}
         ]
-  @doc """
-  How: takes `pairs`, `opts`; guards `is_list(pairs)`
-
-  〚🔧:𔀌𓣲𓦅𔓸〛 params :: params/2
-  """
+  # 〚🔧:𔀌𓣲𓦅𔓸〛 params :: params/2
   def params(pairs, opts) when is_list(pairs) do
     Enum.flat_map(pairs, fn
       {opt_key, param_name} -> encode_param(param_name, Keyword.get(opts, opt_key), :csv)

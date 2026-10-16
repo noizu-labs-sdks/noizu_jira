@@ -1,9 +1,9 @@
+# 〚🔧:𓈣𓔘𓬓𓷀〛 Noizu.Jira.Worklogs :: Issue worklogs (platform v3, offset pagination).
 defmodule Noizu.Jira.Worklogs do
   @moduledoc """
   Issue worklogs (platform v3, offset pagination). Comment bodies are ADF;
   plain text is wrapped automatically.
 
-  〚📦:𓈣𓔘𓬓𓷀〛 Noizu.Jira.Worklogs :: Issue worklogs (platform v3, offset pagination).
   """
 
   alias Noizu.Jira.{ADF, Pagination, Request}
@@ -22,11 +22,7 @@ defmodule Noizu.Jira.Worklogs do
   @doc "Lists worklogs (offset page: `{worklogs, startAt, maxResults, total}`)."
   @spec list(Noizu.Jira.Client.t(), String.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `opts`
-
-  〚🔧:𓥹𔅶𓶖𓚢〛 list :: list/3
-  """
+  # 〚🔧:𓥹𔅶𓶖𓚢〛 list :: list/3
   def list(client, issue_id_or_key, opts \\ []) do
     params =
       Request.params([start_at: :startAt, max_results: :maxResults, expand: :expand], opts)
@@ -37,9 +33,9 @@ defmodule Noizu.Jira.Worklogs do
   @doc """
   Lazily streams every worklog. Raises `Noizu.Jira.Error` on page failure.
 
-  〚🔧:𓊲𓲑𓷑𔄦〛 stream :: Lazily streams every worklog.
   """
   @spec stream(Noizu.Jira.Client.t(), String.t(), keyword()) :: Enumerable.t()
+  # 〚🔧:𓊲𓲑𓷑𔄦〛 stream :: Lazily streams every worklog.
   def stream(client, issue_id_or_key, opts \\ []) do
     refetch = fn start -> list(client, issue_id_or_key, Keyword.put(opts, :start_at, start)) end
 
@@ -67,11 +63,7 @@ defmodule Noizu.Jira.Worklogs do
   """
   @spec add(Noizu.Jira.Client.t(), String.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `opts`
-
-  〚🔧:𓜖𔅗𓻄𓓅〛 add :: add/3
-  """
+  # 〚🔧:𓜖𔅗𓻄𓓅〛 add :: add/3
   def add(client, issue_id_or_key, opts \\ []) do
     body =
       %{}
@@ -91,11 +83,7 @@ defmodule Noizu.Jira.Worklogs do
   @doc "Updates a worklog; same options as `add/3`."
   @spec update(Noizu.Jira.Client.t(), String.t(), String.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `worklog_id`, `opts`
-
-  〚🔧:𓳶𔒚𔖉𔀓〛 update :: update/4
-  """
+  # 〚🔧:𓳶𔒚𔖉𔀓〛 update :: update/4
   def update(client, issue_id_or_key, worklog_id, opts \\ []) do
     body =
       %{}
@@ -115,11 +103,7 @@ defmodule Noizu.Jira.Worklogs do
   @doc "Deletes a worklog; estimate options as in `add/3`."
   @spec delete(Noizu.Jira.Client.t(), String.t(), String.t(), keyword()) ::
           {:ok, term()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `worklog_id`, `opts`
-
-  〚🔧:𔙡𓨮𔄫𔘎〛 delete :: delete/4
-  """
+  # 〚🔧:𔙡𓨮𔄫𔘎〛 delete :: delete/4
   def delete(client, issue_id_or_key, worklog_id, opts \\ []) do
     Request.request(
       client,

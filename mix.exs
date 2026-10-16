@@ -44,7 +44,23 @@ defmodule Noizu.Jira.MixProject do
       main: "readme",
       source_url: @source_url,
       source_ref: "v#{@version}",
-      extras: ["README.md", "docs/API-CONTRACT.md", "CHANGELOG.md"],
+      extras: [
+        "README.md",
+        "docs/API-CONTRACT.md",
+        "docs/PROJ-LAYOUT.md",
+        "docs/layout/lib.md",
+        "docs/layout/test.md",
+        "docs/PROJ-ARCH.md",
+        "docs/arch/request-pipeline.md",
+        "docs/arch/streaming.md",
+        "docs/THREAT-MODEL.md",
+        "docs/threats/credentials.md",
+        "docs/threats/url-construction.md",
+        "docs/threats/input-surfaces.md",
+        "docs/threats/network-retry.md",
+        "docs/threats/supply-chain.md",
+        "CHANGELOG.md"
+      ],
       groups_for_modules: [
         Resources: [
           Noizu.Jira.Issues,

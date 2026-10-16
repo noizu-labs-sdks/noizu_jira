@@ -1,3 +1,4 @@
+# 〚🔧:𔗩𓭼𔄜𓂾〛 Noizu.Jira.Comments :: Issue comments (platform v3, offset pagination).
 defmodule Noizu.Jira.Comments do
   @moduledoc """
   Issue comments (platform v3, offset pagination).
@@ -5,7 +6,6 @@ defmodule Noizu.Jira.Comments do
   Comment bodies are ADF; binaries passed to `add/4` and `update/5` are wrapped
   with [`Noizu.Jira.ADF.doc/1`](`Noizu.Jira.ADF`).
 
-  〚📦:𔗩𓭼𔄜𓂾〛 Noizu.Jira.Comments :: Issue comments (platform v3, offset pagination).
   """
 
   alias Noizu.Jira.{ADF, Pagination, Request}
@@ -16,11 +16,7 @@ defmodule Noizu.Jira.Comments do
   @doc "Lists comments (offset page: `{comments, startAt, maxResults, total, isLast}`)."
   @spec list(Noizu.Jira.Client.t(), String.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `opts`
-
-  〚🔧:𔈵𓙖𓉙𓖪〛 list :: list/3
-  """
+  # 〚🔧:𔈵𓙖𓉙𓖪〛 list :: list/3
   def list(client, issue_id_or_key, opts \\ []) do
     params =
       Request.params(
@@ -34,9 +30,9 @@ defmodule Noizu.Jira.Comments do
   @doc """
   Lazily streams every comment. Raises `Noizu.Jira.Error` on page failure.
 
-  〚🔧:𔗢𔈇𓞧𓭖〛 stream :: Lazily streams every comment.
   """
   @spec stream(Noizu.Jira.Client.t(), String.t(), keyword()) :: Enumerable.t()
+  # 〚🔧:𔗢𔈇𓞧𓭖〛 stream :: Lazily streams every comment.
   def stream(client, issue_id_or_key, opts \\ []) do
     refetch = fn start -> list(client, issue_id_or_key, Keyword.put(opts, :start_at, start)) end
 
@@ -52,11 +48,7 @@ defmodule Noizu.Jira.Comments do
   @doc "Adds a comment; plain text is wrapped in ADF. Options: `:expand`."
   @spec add(Noizu.Jira.Client.t(), String.t(), String.t() | map(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `body`, `opts`
-
-  〚🔧:𓠄𓹝𓾸𓳖〛 add :: add/4
-  """
+  # 〚🔧:𓠄𓹝𓾸𓳖〛 add :: add/4
   def add(client, issue_id_or_key, body, opts \\ []) do
     params = Request.params([expand: :expand], opts)
 
@@ -69,11 +61,7 @@ defmodule Noizu.Jira.Comments do
   @doc "Fetches one comment. Option: `:expand`."
   @spec get(Noizu.Jira.Client.t(), String.t(), String.t(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `comment_id`, `opts`
-
-  〚🔧:𔀪𓱅𓘽𓦦〛 get :: get/4
-  """
+  # 〚🔧:𔀪𓱅𓘽𓦦〛 get :: get/4
   def get(client, issue_id_or_key, comment_id, opts \\ []) do
     params = Request.params([expand: :expand], opts)
 
@@ -88,11 +76,7 @@ defmodule Noizu.Jira.Comments do
   @doc "Updates a comment; plain text is wrapped in ADF. Option: `:notify_users`."
   @spec update(Noizu.Jira.Client.t(), String.t(), String.t(), String.t() | map(), keyword()) ::
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `comment_id`, `body`, `opts`
-
-  〚🔧:𓄆𔈳𓏶𓇁〛 update :: update/5
-  """
+  # 〚🔧:𓄆𔈳𓏶𓇁〛 update :: update/5
   def update(client, issue_id_or_key, comment_id, body, opts \\ []) do
     params = Request.params([notify_users: :notifyUsers], opts)
 
@@ -108,11 +92,7 @@ defmodule Noizu.Jira.Comments do
   @doc "Deletes a comment."
   @spec delete(Noizu.Jira.Client.t(), String.t(), String.t()) ::
           {:ok, term()} | {:error, Noizu.Jira.Error.t()}
-  @doc """
-  How: takes `client`, `issue_id_or_key`, `comment_id`
-
-  〚🔧:𓾃𓍞𔑯𔎡〛 delete :: delete/3
-  """
+  # 〚🔧:𓾃𓍞𔑯𔎡〛 delete :: delete/3
   def delete(client, issue_id_or_key, comment_id) do
     Request.request(
       client,
