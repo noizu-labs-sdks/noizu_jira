@@ -2,7 +2,7 @@ defmodule Noizu.Jira.MixProject do
   use Mix.Project
 
   @version "0.1.0"
-  @source_url "https://github.com/noizu-labs/noizu_jira"
+  @source_url "https://github.com/noizu-labs-sdks/noizu_jira"
   @description "Elixir client for the Jira Cloud REST API v3 and the Jira Software agile API (basic auth and OAuth 2.0 3LO)."
 
   def project do
