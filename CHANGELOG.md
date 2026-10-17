@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Uploads compile and run warning-free across the supported Elixir range
+  (1.15–1.20): `File.stream!/3`'s argument order changed in 1.16
+  (`(path, modes, line_or_bytes)` → `(path, line_or_bytes, modes)`, the old
+  order warns at runtime on newer compilers), so a compile-time branch now
+  picks the signature matching the compiling version; the 64 KiB lazy chunked
+  stream behaviour is identical on both. CI gained an Elixir 1.20/OTP 29 lane
+  and a >64 KiB multi-chunk upload test guards the streaming path.
+
 Security-hardening pass (threat model: `docs/THREAT-MODEL.md`).
 
 - Credentials are redacted from `inspect/1` of `Noizu.Jira.Client` — at most the basic email and a 4-character token prefix appear; the API token / OAuth access token never render (T-001).

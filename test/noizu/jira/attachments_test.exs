@@ -64,6 +64,31 @@ defmodule Noizu.Jira.AttachmentsTest do
     refute raw =~ "weird name"
   end
 
+  test "add streams files larger than one 64 KiB chunk intact" do
+    name = stub_name()
+    client = basic_client(req: [plug: {Req.Test, name}])
+
+    # 3 full 64 KiB chunks + a partial tail: proves chunked, lazy reading.
+    content = :binary.copy(<<0>>, 65_536 * 3) <> "tail"
+    path = write_fixture("big.log", content)
+
+    Req.Test.stub(name, fn conn ->
+      {:ok, raw, conn} = Plug.Conn.read_body(conn)
+      send(self(), {:body, raw})
+      respond(conn, 200, [%{"id" => "3"}])
+    end)
+
+    try do
+      assert {:ok, _} = Attachments.add(client, "PROJ-1", path)
+    after
+      File.rm(path)
+    end
+
+    assert_received {:body, raw}
+    assert byte_size(raw) >= byte_size(content)
+    assert raw =~ "tail"
+  end
+
   test "get returns attachment metadata" do
     name = stub_name()
     client = basic_client(req: [plug: {Req.Test, name}])
