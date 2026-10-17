@@ -23,9 +23,7 @@ defmodule Noizu.Jira.Attachments do
           {:ok, map()} | {:error, Noizu.Jira.Error.t()}
   # 〚🔧:𓨉𓅸𓐉𔖲〛 add :: add/4
   def add(client, issue_id_or_key, path, opts \\ []) do
-    # 64 KiB chunks via the third argument: the read-ahead-bytes second
-    # argument only exists on Elixir >= 1.16 (mix.exs allows ~> 1.15).
-    stream = File.stream!(path, [], 65_536)
+    stream = chunk_stream(path, 65_536)
     entry = if filename = opts[:filename], do: {stream, filename: filename}, else: stream
 
     Request.request(
@@ -74,5 +72,17 @@ defmodule Noizu.Jira.Attachments do
       :delete,
       "/rest/api/3/attachment/" <> Request.encode_segment(attachment_id)
     )
+  end
+
+  # Lazy 64 KiB chunked file stream for multipart uploads. `File.stream!/3`'
+  # argument order changed in Elixir 1.16 — `(path, modes, line_or_bytes)`
+  # before, `(path, line_or_bytes, modes)` after — and the pre-1.16 order
+  # warns as deprecated on newer compilers. Branch at compile time so each
+  # supported version (mix.exs allows ~> 1.15) compiles only its own
+  # warning-free signature.
+  if Version.match?(System.version(), ">= 1.16.0") do
+    defp chunk_stream(path, chunk_size), do: File.stream!(path, chunk_size, [])
+  else
+    defp chunk_stream(path, chunk_size), do: File.stream!(path, [], chunk_size)
   end
 end

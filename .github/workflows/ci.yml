@@ -20,6 +20,10 @@ jobs:
           # Current pair.
           - elixir: "1.18.4"
             otp: "27"
+          # Latest — guards the File.stream!/3 arg-order compat shim
+          # (old order warns at runtime on >= 1.16).
+          - elixir: "1.20.1"
+            otp: "29"
     env:
       MIX_ENV: test
     steps:
