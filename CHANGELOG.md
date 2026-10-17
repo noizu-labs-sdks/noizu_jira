@@ -13,6 +13,8 @@ Security-hardening pass (threat model: `docs/THREAT-MODEL.md`).
 - Attachment upload streams via `File.stream!/3`'s chunk-size third argument, restoring compatibility with Elixir 1.15 (the read-ahead-bytes second argument requires >= 1.16); tests normalized so patterns avoid pin-inside-`<>` concatenation, which older Elixir rejects at compile time.
 - Threat model updated: T-001/T-002/T-003/T-005 moved to Mitigated with regression-test evidence; docs (README, API-CONTRACT, layout/arch notes) aligned with the new `:site` grammar and retry clamp.
 
+- Repository moved to the `noizu-labs-sdks` GitHub org; `source_url` and hex package links updated in `mix.exs`.
+
 ## 0.1.0 — 2026-10-17
 
 Initial release.
