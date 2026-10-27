@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-28
+- docs: add AGENT-README.md (agent orientation)
+
 ## Unreleased
 
 - Doc sweep 2026-10-27: added `docs/PROJ-SCHEMA.md` (+ summary) covering the
