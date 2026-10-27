@@ -102,12 +102,12 @@ pointers:
     file_path: lib/noizu/jira/search.ex
     function: stream
     kind: function
-    line: 52
+    line: 63
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 52
+        line: 63
     token: 𔉫𓈢𓔒𓺌
-    updated_at: 2026-10-16T22:04:19.623432Z
+    updated_at: 2026-10-27T05:17:36.614758Z
   16af8216-2658-565c-a75d-0b6550ace363:
     created_at: 2026-10-16T21:56:50.913364Z
     description: issues/3
@@ -162,12 +162,12 @@ pointers:
     file_path: lib/noizu/jira/client.ex
     function: new
     kind: function
-    line: 51
+    line: 63
     locations:
       - file_path: lib/noizu/jira/client.ex
-        line: 51
+        line: 63
     token: 𓟱𓖇𔇁𓹕
-    updated_at: 2026-10-16T22:04:19.623261Z
+    updated_at: 2026-10-27T05:17:36.614618Z
   82505504-8aa7-5089-8216-4d735e20b2cc:
     created_at: 2026-10-16T21:56:50.913375Z
     description: Lazily streams a sprint's issues.
@@ -198,12 +198,12 @@ pointers:
     file_path: lib/noizu/jira/search.ex
     function: count
     kind: function
-    line: 68
+    line: 79
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 68
+        line: 79
     token: 𓣿𓩐𓈌𓖁
-    updated_at: 2026-10-16T22:04:19.623278Z
+    updated_at: 2026-10-27T05:17:36.614634Z
   8f5ec483-b5fe-52af-917e-2da611810d82:
     created_at: 2026-10-16T21:56:50.913083Z
     description: Project lookup (platform v3, offset pagination).
@@ -402,12 +402,12 @@ pointers:
     file_path: lib/noizu/jira/pagination.ex
     function: offset_next
     kind: function
-    line: 53
+    line: 57
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 53
+        line: 57
     token: 𔌹𔆕𔘍𓙾
-    updated_at: 2026-10-16T22:04:19.623439Z
+    updated_at: 2026-10-27T05:17:36.614765Z
   129d5d2a-36e6-5e4c-8492-29d5b31366fe:
     created_at: 2026-10-16T21:56:50.913397Z
     description: delete/2
@@ -462,12 +462,12 @@ pointers:
     file_path: lib/noizu/jira/search.ex
     function: search
     kind: function
-    line: 30
+    line: 41
     locations:
       - file_path: lib/noizu/jira/search.ex
-        line: 30
+        line: 41
     token: 𔉬𔙛𓲕𓕿
-    updated_at: 2026-10-16T22:04:19.623435Z
+    updated_at: 2026-10-27T05:17:36.614762Z
   8f7cd28e-015c-598b-b829-49c664f5ffbe:
     created_at: 2026-10-16T21:56:50.913315Z
     description: params_query/1
@@ -510,12 +510,12 @@ pointers:
     file_path: lib/noizu/jira/pagination.ex
     function: array_next
     kind: function
-    line: 89
+    line: 93
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 89
+        line: 93
     token: 𔖋𓪯𓩠𓼅
-    updated_at: 2026-10-16T22:04:19.623461Z
+    updated_at: 2026-10-27T05:17:36.614804Z
   d42c600a-e320-5a95-8add-02963ff4bd85:
     created_at: 2026-10-16T21:56:50.913280Z
     description: Field metadata (platform v3).
@@ -564,6 +564,19 @@ pointers:
         line: 55
     token: 𔀠𓼽𔉳𓭉
     updated_at: 2026-10-16T22:04:19.623389Z
+  fdcc43bd-842b-59a3-aca3-c12e70026829:
+    class: Noizu.Jira.Client
+    created_at: 2026-10-27T05:17:09.974284Z
+    description: Redacting Inspect implementation (T-001)
+    file_path: lib/noizu/jira/client.ex
+    function: Inspect (Noizu.Jira.Client)
+    kind: function
+    line: 193
+    locations:
+      - file_path: lib/noizu/jira/client.ex
+        line: 193
+    token: 𓦑𓐐𓘆𓢙
+    updated_at: 2026-10-27T05:17:36.614657Z
   da7e8b2b-e376-5eb4-85b0-f9f4686e680b:
     created_at: 2026-10-16T21:56:50.913330Z
     description: Lazily streams a board's issues following `nextPageToken`.
@@ -642,12 +655,12 @@ pointers:
     file_path: lib/noizu/jira/client.ex
     function: authorization_header
     kind: function
-    line: 86
+    line: 102
     locations:
       - file_path: lib/noizu/jira/client.ex
-        line: 86
+        line: 102
     token: 𓍸𔑎𔎽𓴬
-    updated_at: 2026-10-16T21:56:50.913057Z
+    updated_at: 2026-10-27T05:17:36.614549Z
   f6186b82-df89-5ab2-90cc-a82ff1fc24c7:
     created_at: 2026-10-16T21:56:50.913136Z
     description: Lazily streams statuses.
@@ -894,12 +907,12 @@ pointers:
     file_path: lib/noizu/jira/client.ex
     function: base_url
     kind: function
-    line: 78
+    line: 92
     locations:
       - file_path: lib/noizu/jira/client.ex
-        line: 78
+        line: 92
     token: 𓚞𓮴𓂏𓩞
-    updated_at: 2026-10-16T21:56:50.913119Z
+    updated_at: 2026-10-27T05:17:36.614595Z
   f699bd93-d613-5e3e-9e34-bb42492e5ef1:
     created_at: 2026-10-16T21:56:50.913308Z
     description: stream/3
@@ -1062,12 +1075,12 @@ pointers:
     file_path: lib/noizu/jira/pagination.ex
     function: token_next
     kind: function
-    line: 73
+    line: 77
     locations:
       - file_path: lib/noizu/jira/pagination.ex
-        line: 73
+        line: 77
     token: 𓩰𔙸𔗲𔎈
-    updated_at: 2026-10-16T22:04:19.623332Z
+    updated_at: 2026-10-27T05:17:36.614670Z
   cf01f3a4-9f47-5066-8607-f27b238754f9:
     created_at: 2026-10-16T21:56:50.913283Z
     description: Creates a sprint from a payload (`name`, `startDate`, `endDate`, `originBoardId`, ...).

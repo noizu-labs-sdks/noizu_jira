@@ -190,7 +190,7 @@ defmodule Noizu.Jira.Client do
   end
 end
 
-# 〚🔧:𓲢𓎩𔒔𓂻〛 Inspect (Noizu.Jira.Client) :: Redacting Inspect implementation (T-001)
+# 〚🔧:𓦑𓐐𓘆𓢙〛 Inspect (Noizu.Jira.Client) :: Redacting Inspect implementation (T-001)
 defimpl Inspect, for: Noizu.Jira.Client do
   @moduledoc false
 
