@@ -90,7 +90,8 @@ Already in place (controls, mapped to IDs):
   use http) for proxies and tests (T-003).
 - CI (GitHub Actions, push/PR on develop/stage/main): format check,
   `compile --warnings-as-errors`, tests, and `mix hex.audit` on an
-  Elixir 1.15/OTP 25 + 1.18/OTP 27 matrix (T-010 audit leg).
+  Elixir 1.15/OTP 25 + 1.18/OTP 27 + 1.20/OTP 29 matrix (T-010 audit leg;
+  the 1.20 lane also guards the `File.stream!/3` compat shim).
 - No logging, no persistence, no eval of server data; responses stay plain
   maps (T-009 severity, general).
 - Lockfile-pinned minimal dependency tree (T-010).
@@ -118,6 +119,8 @@ UUID-format check on `cloud_id`.
 Findings verified against the code, not assumed: T-001/T-005 behaviors were
 reproduced on the VM; every claim about controls traces to
 `lib/noizu/jira/{client,request,pagination,error,attachments,search}.ex`.
-No git history yet (pre-initial-commit) — this model reflects the working
-tree as of 2026-10-17, updated after the security-hardening pass
-(T-001/T-002/T-003/T-005 fixed with regression tests; CI added).
+Register established 2026-10-17 during the security-hardening pass
+(T-001/T-002/T-003/T-005 fixed with regression tests; CI added); last
+re-verified 2026-10-27 against the tree at `774a7ad` (org move + upload
+compat shim did not change the register — T-010's CI audit leg gained an
+Elixir 1.20/OTP 29 lane).

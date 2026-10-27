@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Doc sweep 2026-10-27: added `docs/PROJ-SCHEMA.md` (+ summary) covering the
+  client/error/ADF data shapes (no relational store — ERD n/a); layout tree
+  now lists the full docs subtree, `.github/`, and `.meta/`; threat model
+  and supply-chain notes updated for the 3-lane CI matrix (Elixir
+  1.15/1.18/1.20); doc-pointer store re-anchored for the T-001 `Inspect`
+  marker (pointer `fdcc43bd-842b-59a3-aca3-c12e70026829`).
+
 - Uploads compile and run warning-free across the supported Elixir range
   (1.15–1.20): `File.stream!/3`'s argument order changed in 1.16
   (`(path, modes, line_or_bytes)` → `(path, line_or_bytes, modes)`, the old

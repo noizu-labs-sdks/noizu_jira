@@ -19,13 +19,21 @@ jira/
 ├── docs/                           # Hand-written docs (shipped in the Hex package)
 │   ├── API-CONTRACT.md             #   Endpoint inventory, behavior, decision log
 │   ├── PROJ-LAYOUT.md              #   This file
-│   └── layout/                     #   Per-layer detail (lib.md, test.md)
+│   ├── PROJ-LAYOUT.summary.md      #   Tree-only quick reference
+│   ├── PROJ-ARCH.md                #   Architecture overview (+ PROJ-ARCH.summary.md)
+│   ├── PROJ-SCHEMA.md              #   Data-shape reference (client/error/ADF) (+ summary)
+│   ├── THREAT-MODEL.md             #   Threat model, vulnerability register (+ summary)
+│   ├── layout/                     #   Per-layer detail (lib.md, test.md)
+│   ├── arch/                       #   Request pipeline, streaming detail
+│   └── threats/                    #   Per-concern threat detail (5 files)
 ├── doc/                            # mix docs output (GENERATED, gitignored — not "docs/")
+├── .github/workflows/ci.yml        # CI: 3-lane Elixir matrix (1.15/1.18/1.20), format + compile + test + hex.audit
+├── .meta/pointers.yaml             # doc-pointers store (UUID markers in source comments)
 ├── mix.exs                         # Project, deps, ex_doc groups, Hex package config
 ├── mix.lock                        # Locked dep versions (supply-chain pin)
 ├── .formatter.exs                  # mix format inputs (mix, config, lib, test)
 ├── .gitignore                      # Standard Mix ignores (_build, deps, doc, cover, tmp)
-├── CHANGELOG.md                    # Dated work log (0.1.0 initial release)
+├── CHANGELOG.md                    # Dated work log (0.1.0 initial release + unreleased)
 ├── README.md                       # Quickstart + install
 └── LICENSE                         # MIT
 ```

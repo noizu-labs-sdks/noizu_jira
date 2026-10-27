@@ -1,7 +1,7 @@
 # noizu_jira — Supply Chain (Hex Dependencies)
 
 The library's dependency exposure. Grounding: `mix.exs` deps, `mix.lock`
-(SHA-256 pins), repo state (no CI, pre-initial-commit).
+(SHA-256 pins), `.github/workflows/ci.yml` (3-lane matrix with `mix hex.audit`).
 
 ## Dependency tree
 
@@ -36,14 +36,14 @@ reproducible even against a mutable Hex registry.
   - Package published from `files:` in `mix.exs` (lib + docs only) — no
     build scripts, no NIFs, no escript entry points in the dependency set.
   Gaps (honest accounting):
-  - **No CI exists yet** (repo is pre-initial-commit): no automated
-    `mix hex.audit`, no Dependabot/renovate, no lockfile-diff review gate.
-    Supply-chain review is currently a manual duty on every dependency bump.
+  - CI (GitHub Actions, push/PR on develop/stage/main) runs `mix hex.audit`
+    on an Elixir 1.15/OTP 25 + 1.18/OTP 27 + 1.20/OTP 29 matrix, but there
+    is no Dependabot/renovate and no lockfile-diff review gate — supply-chain
+    review of dependency bumps remains a manual duty.
   - Hex packages are checksummed but the trust root is the registry itself;
     a registry compromise is out of this library's control (standard Hex
     posture).
-  *Recommended mitigations:* when the repo goes public, add CI running
-  `mix deps.unlock --check-unused`, `mix hex.audit`, and a lockfile-review
+  *Recommended mitigations:* add Dependabot/renovate and a lockfile-review
   requirement on dependency PRs.
 - **Consumer inheritance (residual):** applications depending on
   `noizu_jira` inherit Req's tree and its advisories; semver-bounded bumps
